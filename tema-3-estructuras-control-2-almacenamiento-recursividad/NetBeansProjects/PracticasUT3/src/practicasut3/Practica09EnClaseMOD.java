@@ -2,8 +2,6 @@
     Práctica 9: Crear un programa que guarde en un array 10 números aleatorios entre 1 y 99
         que sean pares. Luego mostrar en pantalla los 10 números, así como el máximo y el mínimo
         de esos 10 números y las respectivas posiciones que ocupan en el array
-
-    Versión realizada en clase.
  */
 package practicasut3;
 
@@ -14,7 +12,7 @@ import java.util.Scanner;
  *
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
-public class Practica09EnClase {
+public class Practica09EnClaseMOD {
 
     public static void mostrarArray(int[] array) {
         System.out.print("[ ");
@@ -34,22 +32,33 @@ public class Practica09EnClase {
             int dato = (rnd.nextInt(49) + 1) * 2;
             array[i] = dato;
         }
+
+        // MOD: Usando unicamente la posición de los valores.
         
-        int max=-1, min=101, posMax=0, posMin=0;
-        
+        int posMax = 0, posMin = 0;
+
         for (int i = 0; i < array.length; i++) {
-            if (max < array[i]) {
-                max = array[i];
+            if (array[posMax] < array[i]) {
                 posMax = i;
             }
-            if (min > array[i]) {
-                min = array[i];
+            if (array[posMin] > array[i]) {
                 posMin = i;
             }
         }
-        // Mostrar todas las posiciones donde esta el maximo y el minimo.
+        //MOD: Mostrar TODAS las posiciones donde esta el maximo y el minimo.
         mostrarArray(array);
-        System.out.println("Maximo= "+max+" posMax= "+posMax);
-        System.out.println("Minimo= "+min+" posMin= "+posMin);
+        System.out.print("Maximo= " + array[posMax] + " posMax= ");
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == array[posMax]) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.print("\nMinimo= " + array[posMin] + " posMin= ");
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == array[posMin]) {
+                System.out.print(i + " ");
+            }
+        }
+        System.out.println("");
     }
 }
