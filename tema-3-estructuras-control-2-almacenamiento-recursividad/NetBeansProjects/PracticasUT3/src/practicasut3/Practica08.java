@@ -21,9 +21,18 @@ public class Practica08 {
             array[i] = sc.nextInt();
         }
         
-        for (int i = 0; i < array.length ; i++) {
-            System.out.println("El contenido de array["+i+"] es: "+array[i]);
-        }
+//        for (int i = 0; i < array.length ; i++) {
+//            System.out.println("El contenido de array["+i+"] es: "+array[i]);
+//        }
+
+        mostrarArrayConIndices(array);
         
+    }
+    
+    public static void mostrarArrayConIndices(int[] vector){
+        for (int i = 0; i < 10; i++) {
+            System.out.println("array["+ i +"]: "+
+                   vector[i]+" " );
+        }
     }
 }
