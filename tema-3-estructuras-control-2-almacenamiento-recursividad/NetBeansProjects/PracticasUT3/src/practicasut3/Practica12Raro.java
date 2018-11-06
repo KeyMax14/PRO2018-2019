@@ -25,6 +25,14 @@ public class Practica12Raro {
         return resultado;
     }
 
+    public static void mostrarArray(int[] array) {
+        System.out.print("[ ");
+        for (int i = 0; i < array.length - 1; i++) {
+            System.out.print(array[i] + ", ");
+        }
+        System.out.println(array[array.length - 1] + " ]");
+    }
+
     static int[] ArrayMin(int[] copia) {
         int[] arrayMin = new int[5];
         int min;
@@ -56,14 +64,9 @@ public class Practica12Raro {
         }
         min = ArrayMin(array.clone());
 
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
-        }
-        System.out.println("");
-        for (int i = 0; i < 5; i++) {
-            System.out.print(min[i] + " ");
-        }
-        System.out.println("");
+        mostrarArray(array);
+        mostrarArray(min);
+        
 
         // Lo que sigue a esto hay que cambiarlo todo, no es lo que se pide.
 //        min = array.clone();
