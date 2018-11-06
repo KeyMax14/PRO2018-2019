@@ -10,6 +10,7 @@ import java.util.Scanner;
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
 public class Practica11 {
+    
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
