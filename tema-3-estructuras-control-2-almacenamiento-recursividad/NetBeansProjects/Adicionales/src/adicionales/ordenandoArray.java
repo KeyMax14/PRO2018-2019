@@ -94,16 +94,16 @@ public class ordenandoArray {
     */
     
     public static void ordenarArray2(int [] array){
-        for (int i = 0; i < array.length-1; i++) {
-            int j = i+1, valorAnterior=i;
-            while (array[j] < array[valorAnterior]) {
-                int temp = array[valorAnterior];
-                array[valorAnterior] = array[j];
+        for (int i = 1; i < array.length-1; i++) {
+            int j = i;
+            while (array[j] < array[j-1] && j > 0) { // da error de rango si el primero es mayor que el segundo
+                int temp = array[j-1];
+                array[j-1] = array[j];
                 array[j] = temp;
-                valorAnterior--;
+                //j-1--;
                 j--;
             }
-            //mostrarArray(array);
+            mostrarArray(array);
         }
     }
     
@@ -113,7 +113,7 @@ public class ordenandoArray {
 //        mostrarArray(aleatorios);
 //        ordenarArray(aleatorios);
 //        mostrarArray(aleatorios);
-        int[] ordenar2 = {2,11,5,8,4,9};
+        int[] ordenar2 = {11,2,5,8,4,9};
         mostrarArray(ordenar2);
         ordenarArray2(ordenar2);
         mostrarArray(ordenar2);
