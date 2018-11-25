@@ -9,7 +9,7 @@ import java.util.Scanner;
  *
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
-public class Practica11enClase {
+public class Practica11EnClase {
 
     public static double mediaArray(int[] nums) {
         int suma = 0;

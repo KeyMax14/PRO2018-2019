@@ -36,7 +36,7 @@ public class Practica23 {
             i++;
             num /= 10;
 
-        } while (num < 0);
+        } while (num > 0);
         return i;
     }
 
