@@ -16,13 +16,43 @@ public class Coche {
     private boolean frenoDeManoPuesto;
     private int posicion;
     
-    public Coche(String n){
-        nombre = n;
+    public String encender(){
+        String resultado = "";
+        if (encendido) {
+            resultado = "me hace daño!";
+        }else{
+            resultado = "Encender ok.";
+            this.encendido= true;
+        }
+        return resultado;
+    }
+    
+    public String apagar(){
+        String respuesta = "";
+        if (encendido) {
+            respuesta = "Coche Apagado.";
+            encendido = false;
+        }else
+            respuesta = "Vas a partir la llave.";
+        
+        return respuesta;
+    }
+    
+    
+    public Coche(){
+        this("Anonimo");
+    }
+    
+    public Coche(String nombre){
+        this(nombre,0);
+
     }
 
-    public Coche(String n, int p) {
-        nombre = n;
-        posicion = p;
+    public Coche(String nombre, int posicion) {
+        this.nombre = nombre;
+        this.posicion = posicion;
+        this.encendido = false;
+        this.frenoDeManoPuesto = true;
     }
 
     public String getNombre() {
