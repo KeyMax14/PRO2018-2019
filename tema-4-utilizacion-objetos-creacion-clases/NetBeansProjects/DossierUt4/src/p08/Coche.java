@@ -11,40 +11,92 @@ package p08;
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
 public class Coche {
+
     private String nombre;
     private boolean encendido;
     private boolean frenoDeManoPuesto;
     private int posicion;
-    
-    public String encender(){
-        String resultado = "";
+
+    public String encender() {
+        String resultado = nombre + ": ";
         if (encendido) {
             resultado = "me hace daño!";
-        }else{
+        } else {
             resultado = "Encender ok.";
-            this.encendido= true;
+            this.encendido = true;
         }
         return resultado;
     }
-    
-    public String apagar(){
-        String respuesta = "";
+
+    public String apagar() {
+        String respuesta = nombre + ": ";
         if (encendido) {
             respuesta = "Coche Apagado.";
             encendido = false;
-        }else
+        } else {
             respuesta = "Vas a partir la llave.";
-        
+        }
+
         return respuesta;
     }
-    
-    
-    public Coche(){
+
+    public String quitarFrenoMano() {
+        String respuesta = nombre + ": ";
+        if (frenoDeManoPuesto) {
+            frenoDeManoPuesto = false;
+            respuesta = "Freno mano quitado.";
+        } else {
+            respuesta = "Freno de mano ya estaba quitado.";
+        }
+        return respuesta;
+    }
+
+    public String ponerFrenoMano() {
+        String respuesta = nombre + ": ";
+        if (frenoDeManoPuesto) {
+            respuesta = "Freno mano ya estaba puesto.";
+        } else {
+            frenoDeManoPuesto = true;
+            respuesta = "Freno de mano puesto.";
+        }
+        return respuesta;
+    }
+
+    public String moverIzquierda(int pasos) {
+        pasos *= -1;
+
+        return moverCoche(pasos);
+    }
+
+    public String moverDerecha(int pasos) {
+        return moverCoche(pasos);
+    }
+
+    private String moverCoche(int pasos) {
+        String respuesta = "" + nombre + ": ";
+        if (!encendido) {
+            respuesta = "El coche esta apagado. No se puede mover.";
+        } else if (frenoDeManoPuesto) {
+            respuesta = "Freno de mano puesto. Coche apagado.";
+            encendido = false;
+        } else {
+            if (posicion + pasos < 0) {
+                posicion = 0;
+                respuesta = "Llegamos al limite.";
+            } else {
+                this.posicion -= pasos;
+                respuesta = "Ok, coche avanzo hasta: " + posicion;
+            }
+        }
+        return respuesta;
+    }
+
+    public Coche() {
         this("Anonimo");
     }
-    
-    public Coche(String nombre){
-        this(nombre,0);
+
+    public Coche(String nombre) {
+        this(nombre, 0);
 
     }
 
@@ -53,6 +105,16 @@ public class Coche {
         this.posicion = posicion;
         this.encendido = false;
         this.frenoDeManoPuesto = true;
+    }
+    
+    // El siguiente constructor es un constructor de copia.
+    // Así se pueden clonar objetos.
+    
+    public Coche(Coche otroCoche){
+        this.nombre= otroCoche.nombre;
+        this.posicion = otroCoche.posicion;
+        this.encendido = otroCoche.encendido;
+        this.frenoDeManoPuesto = otroCoche.frenoDeManoPuesto;
     }
 
     public String getNombre() {
