@@ -1,12 +1,10 @@
 /*
-    Práctica 15: Crea la clase Complejo que sirva para utilizar números complejos. Estos
-        números disponen de una parte real y una parte imaginaria ( atritubos double real, double
-        imag ) Dispondrá de tres constructores:
-        Complejo(double real, double imag)
-        Complejo(double real) → aquí se establecerá la parte imaginaria a 0
-        Complejo() → aquí se establecerán tanto la parte real como la imaginaria a 0
+    Práctica 16: Crear un constructor de copia para la clase Camion de la práctica 14 y un
+        constructor de copia para la clase Complejo de la práctica 15
  */
-package p15;
+package p16;
+
+
 
 /**
  *
@@ -23,6 +21,13 @@ public class Complejo {
 
     public Complejo(double real) {
         this(real,0);
+    }
+    
+    // Mod p16
+    
+    public Complejo(Complejo otroComplejo){
+        this.real = otroComplejo.real;
+        this.imag = otroComplejo.imag;
     }
 
     public Complejo() {
@@ -48,6 +53,4 @@ public class Complejo {
     public void setImag(double imag) {
         this.imag = imag;
     }
-    
-    
 }
