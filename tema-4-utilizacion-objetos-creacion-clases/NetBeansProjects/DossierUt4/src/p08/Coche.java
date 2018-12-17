@@ -28,6 +28,7 @@ public class Coche {
         return resultado;
     }
 
+
     public String apagar() {
         String respuesta = nombre + ": ";
         if (encendido) {
@@ -38,6 +39,16 @@ public class Coche {
         }
 
         return respuesta;
+    }
+    
+    // mod p24
+
+    @Override
+    public String toString(){
+        
+        return ""+nombre+": Esta " + ((encendido)?" encendido,":" apagado,")+
+                ((frenoDeManoPuesto)?" Freno puesto. ":" Freno quitado. ")+
+                "Pos: "+posicion;
     }
 
     public String quitarFrenoMano() {
