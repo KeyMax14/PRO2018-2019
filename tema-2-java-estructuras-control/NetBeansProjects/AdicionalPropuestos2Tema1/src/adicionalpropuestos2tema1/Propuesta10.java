@@ -28,6 +28,7 @@ public class Propuesta10 {
             n = m;
             m = temp;
         }
+        
         System.out.println("\nEstos son los números pares entres ambos: ");
         for (int i = n; i <= m; i++) {
             if (i%2 == 0) {

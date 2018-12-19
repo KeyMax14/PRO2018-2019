@@ -5,6 +5,7 @@
  */
 package practica38;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -17,13 +18,13 @@ public class Practica38 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in).useLocale(Locale.UK);
         System.out.println("Introduce un número de horas: ");
         double horasIni = sc.nextDouble(); // Tengo que poner 135,25 y no puedo poner 135.25?? Por que?
         int dias = (int)(horasIni/24);
         int horasFin = (int)(horasIni%24);
         int minutos = (int)((horasIni%24-horasFin)*(double)60);
-        int segundos = (int)(((horasIni%24-horasFin)*(double)60)-minutos)*60; // No se como sacar la parte decimal, algún metodo especial?
+        int segundos = (int)((((horasIni%24-horasFin)*(double)60)-minutos)*60); // No se como sacar la parte decimal, algún metodo especial?
         System.out.println(dias+" días, "+horasFin+" horas, "+minutos+" minutos, "+segundos+" segundos.");
     }
     
