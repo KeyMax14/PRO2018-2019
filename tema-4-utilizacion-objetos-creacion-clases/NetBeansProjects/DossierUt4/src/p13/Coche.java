@@ -25,6 +25,14 @@ class Coche {
         this.puertas = puertas;
         this.matricula = matricula;
     }
+    
+        // Mod p24 - toString
+
+    @Override
+    public String toString() {
+        return "Marca: "+marca+" Modelo: "+modelo+" Potencia: "+potencia+
+                " n_puerta: "+ puertas+" Matricula: "+matricula;
+    }
 
     Coche(double potencia, int puertas) {
 //        int prueba;

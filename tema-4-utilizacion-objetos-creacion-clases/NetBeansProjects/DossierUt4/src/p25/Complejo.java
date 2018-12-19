@@ -1,16 +1,9 @@
 /*
-    Práctica 21: continuar desarrollando la clase Complejo. Ahora tendrá un método mostrar()
-        que devolverá una String representando el número. Y dos métodos: sumar(double)
-        sumar(Complejo) que devolverán el complejo correspondiente a la suma
-        Nota: la suma de dos números complejos es sumar sus partes reales por un lado y por otro
-        sus partes imaginarias
-        Ej.
-        Complejo c1 = new Complejo(2,0);
-        Complejo c2 = new Complejo(0,2);
-        Complejo c1mas10 = c1.sumar(10);
-        Complejo c1masc2 = c1.sumar(c2);
+    Práctica 25: crear el método boolean equals(Complejo) para la clase Complejo Que
+        determinará que son iguales si las partes reales son iguales y las partes imaginarias son
+        iguales.
  */
-package p21;
+package p25;
 
 /**
  *
@@ -57,6 +50,21 @@ public class Complejo {
 
     public Complejo sumar(Complejo complejo) {
         return new Complejo(this.real + complejo.real, this.imag + complejo.imag);
+    }
+
+    public Complejo multiplicar(double real) {
+        return new Complejo(this.real * real, this.imag * real);
+    }
+
+    public Complejo multiplicar(Complejo complejo) {
+        double real = this.real * complejo.real - this.imag * complejo.imag;
+        double imag = this.real * complejo.real + this.imag * complejo.imag;
+        return new Complejo(real, imag);
+    }
+
+    // Mod p25
+    public boolean equals(Complejo comp) {
+        return ((this.imag == comp.imag) && (this.real == comp.real));
     }
 
 //    public double getReal() {

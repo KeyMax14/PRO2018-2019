@@ -4,7 +4,6 @@
  */
 package p16;
 
-
 /**
  *
  * @author Kevin Hernández García <kevinhg94@gmail.com>
@@ -19,16 +18,15 @@ public class Camion {
     }
 
     public Camion(String marca) {
-        this(marca,null);
+        this(marca, null);
     }
 
     public Camion(String marca, String matricula) {
-        this(marca,0,matricula);
+        this(marca, 0, matricula);
     }
-    
+
     // Mod p16
-    
-    public Camion(Camion otroCamion){
+    public Camion(Camion otroCamion) {
         marca = otroCamion.marca;
         potencia = otroCamion.potencia;
         matricula = otroCamion.matricula;
@@ -38,6 +36,12 @@ public class Camion {
         this.marca = marca;
         this.potencia = potencia;
         this.matricula = matricula;
+    }
+
+    // Mod p24 - toString
+    @Override
+    public String toString() {
+        return "Marca: " + marca + " Potencia: " + potencia + " Matricula: " + matricula;
     }
 
     public String getMatricula() {
@@ -50,4 +54,3 @@ public class Camion {
         this.matricula = matricula;
     }
 }
-

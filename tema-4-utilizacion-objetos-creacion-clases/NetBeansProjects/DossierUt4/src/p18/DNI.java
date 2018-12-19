@@ -22,6 +22,12 @@ public class DNI {
         dniNum = dni.dniNum;
     }
 
+    // Mod p24 - toString
+    @Override
+    public String toString() {
+        return " Número de DNI: "+dniNum;
+    }
+
     public static boolean validarDNI(String dni) throws Exception {
         boolean resultado = false;
 

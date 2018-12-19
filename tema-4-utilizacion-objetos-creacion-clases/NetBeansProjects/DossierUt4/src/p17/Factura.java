@@ -14,21 +14,27 @@ package p17;
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
 public class Factura {
+
     private double total;
     private String detalle;
 
     public Factura() {
         detalle = "";
     }
-    
-    public Factura(Factura factura){
+
+    public Factura(Factura factura) {
         detalle = factura.detalle;
         total = factura.total;
     }
-    
-    
-    public void agregar(String articuloConsumido, double precio) throws Exception{
-        detalle += articuloConsumido+" "+precio+"€\n";
+
+    // Mod p24 - toString
+    @Override
+    public String toString() {
+        return "Total Factura: "+total+" Desglose:\n"+detalle;
+    }
+
+    public void agregar(String articuloConsumido, double precio) throws Exception {
+        detalle += articuloConsumido + " " + precio + "€\n";
         total += precio;
         if (precio < 0) {
             throw new Exception("Error de precio.");
@@ -37,11 +43,11 @@ public class Factura {
             throw new Exception("Articulo en blanco.");
         }
     }
-    
-    public String imprimir(){
-        return detalle+"Total factura: "+total+"€";
+
+    public String imprimir() {
+        return detalle + "Total factura: " + total + "€";
     }
-    
+
 //    public static void main(String[] args) throws Exception {
 //        Factura f = new Factura();
 //        f.agregar("Galletas Oreo", 1.15);
@@ -56,5 +62,4 @@ public class Factura {
 //        System.out.println(f.imprimir());
 //        
 //    }
-    
 }

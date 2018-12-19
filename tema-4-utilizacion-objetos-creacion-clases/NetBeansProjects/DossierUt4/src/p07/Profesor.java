@@ -11,13 +11,21 @@ package p07;
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
 public class Profesor {
+
     private String nombre;
     private String apellidos;
     private int edad;
     private boolean soltero;
     private boolean especialista;
-    
-    public Profesor(String nom, String ape, int ed, boolean solte, boolean espe){
+
+    // Mod p24 - toString 
+    @Override
+    public String toString() {
+        return "Nombre: "+nombre+" Apellidos: "+apellidos+" Edad: "+edad+
+                " ¿Soltero?: "+((soltero)?"Sí":"No")+" ¿Especialista?: "+((especialista)?"Sí":"No");
+    }
+
+    public Profesor(String nom, String ape, int ed, boolean solte, boolean espe) {
         nombre = nom;
         apellidos = ape;
         edad = ed;
@@ -67,6 +75,5 @@ public class Profesor {
     public void setEspecialista(boolean especialista) {
         this.especialista = especialista;
     }
-    
-    
+
 }

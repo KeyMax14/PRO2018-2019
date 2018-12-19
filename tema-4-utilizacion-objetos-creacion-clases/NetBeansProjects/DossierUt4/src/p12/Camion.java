@@ -34,6 +34,12 @@ public class Camion {
         this.matricula = matricula;
     }
 
+    // Mod p24 - toString
+    @Override
+    public String toString() {
+        return "Marca: " + marca + " Potencia: " + potencia + " Matricula: " + matricula;
+    }
+
     public String getMatricula() {
         return this.matricula; // return matricula; valdria tambien
     }
@@ -44,4 +50,3 @@ public class Camion {
         this.matricula = matricula;
     }
 }
-

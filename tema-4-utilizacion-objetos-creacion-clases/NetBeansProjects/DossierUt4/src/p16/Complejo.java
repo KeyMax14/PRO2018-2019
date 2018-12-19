@@ -4,13 +4,12 @@
  */
 package p16;
 
-
-
 /**
  *
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
 public class Complejo {
+
     private double real;
     private double imag;
 
@@ -20,22 +19,27 @@ public class Complejo {
     }
 
     public Complejo(double real) {
-        this(real,0);
+        this(real, 0);
     }
-    
+
     // Mod p16
-    
-    public Complejo(Complejo otroComplejo){
+    public Complejo(Complejo otroComplejo) {
         this.real = otroComplejo.real;
         this.imag = otroComplejo.imag;
     }
 
     public Complejo() {
-        this(0,0);
+        this(0, 0);
     }
-    
-    public String mostrarNum(){
-        return real+", "+imag+"i";
+
+    // Mod p24 - toString
+    @Override
+    public String toString() {
+        return real + ", " + imag + "i";
+    }
+
+    public String mostrarNum() {
+        return real + ", " + imag + "i";
     }
 
     public double getReal() {

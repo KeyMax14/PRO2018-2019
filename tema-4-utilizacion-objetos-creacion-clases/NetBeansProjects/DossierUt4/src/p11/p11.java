@@ -15,8 +15,8 @@ import com.sun.security.ntlm.Client;
  *
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
+class Cliente {
 
-class Cliente{
     private int id;
     private String nombre;
     private String apellido;
@@ -24,11 +24,11 @@ class Cliente{
     private double debe;
     private int noches;
     private double precioNoche;
-    
-    public Cliente(int id, String nombre, int habitacion, int noches, double precioNoche) throws Exception{
+
+    public Cliente(int id, String nombre, int habitacion, int noches, double precioNoche) throws Exception {
         this(id, nombre, "", habitacion, noches, precioNoche);
     }
-    
+
     public Cliente(int id, String nombre, String apellido, int habitacion, int noches, double precioNoche) throws Exception {
         this.id = id;
         this.nombre = nombre;
@@ -40,33 +40,41 @@ class Cliente{
         if (noches < 1) {
             throw new Exception("No puede quedarse en el hotel sin noches.");
         }
-        this.debe = precioNoche*noches;
+        this.debe = precioNoche * noches;
         this.noches = noches;
         this.precioNoche = precioNoche;
     }
-    
-    public String infoEstancia(){
-        String respuesta = "Cliente: "+nombre+" "+apellido+".\n"
-                + "Habitación: "+ habitacion+".\nPrecio noche: "
-                +precioNoche+"€.\nTotal a deber: "+debe+"€.";
+
+    // Mod p24 - toString
+    @Override
+    public String toString() {
+        return "ID: " + id + " Nombre: " + nombre + " Apellido: " + apellido
+                + " Habitacion:" + habitacion + " Total a deber: " + debe + " Número de noches: " + noches
+                + " Precio de noche: " + precioNoche + "€";
+    }
+
+    public String infoEstancia() {
+        String respuesta = "Cliente: " + nombre + " " + apellido + ".\n"
+                + "Habitación: " + habitacion + ".\nPrecio noche: "
+                + precioNoche + "€.\nTotal a deber: " + debe + "€.";
         return respuesta;
     }
-    
-    public String gastar(double gasto){
+
+    public String gastar(double gasto) {
         debe += gasto;
-        return "Actualmente debe "+debe+"€.";
+        return "Actualmente debe " + debe + "€.";
     }
-    
-    public String pagar(double pago){
+
+    public String pagar(double pago) {
         String respuesta = "";
-        if (debe-pago>0) {
+        if (debe - pago > 0) {
             debe -= pago;
-            respuesta = "Actualmente debe "+debe+"€.";
-        }else if(debe-pago==0){
+            respuesta = "Actualmente debe " + debe + "€.";
+        } else if (debe - pago == 0) {
             debe = 0;
             respuesta = "Ha pagado toda su estancía.";
-        }else{
-            respuesta = "Ha pagado toda su estancía. Su vuelta son "+(pago-debe)+"€.";
+        } else {
+            respuesta = "Ha pagado toda su estancía. Su vuelta son " + (pago - debe) + "€.";
             debe = 0;
         }
         return respuesta;
@@ -122,12 +130,13 @@ class Cliente{
 }
 
 public class p11 {
+
     public static void main(String[] args) throws Exception {
         Cliente c = new Cliente(1, "Pedro", "Sanchez", 105, 5, 50);
-        
+
         System.out.println(c.infoEstancia());
         System.out.println(c.gastar(26.56));
         System.out.println(c.pagar(900));
-        
+
     }
 }

@@ -23,8 +23,8 @@ public class Reloj {
 
     public Reloj(int hora, int minuto, int segundo) {
         while (segundo > 60) {
-            minuto +=1;
-            segundo -=60;
+            minuto += 1;
+            segundo -= 60;
         }
         while (minuto > 60) {
             hora += 1;
@@ -41,38 +41,45 @@ public class Reloj {
         this.segundo = reloj.segundo;
     }
 
+    // Mod p24 - toString
+    @Override
+    public String toString() {
+        return "" + hora + ":" + minuto + ":" + segundo;
+    }
+
     public String mostrar() {
         return "" + hora + ":" + minuto + ":" + segundo;
     }
-    
-    public void agregarHoras(int horas) throws Exception{
-        if (horas>=0) {
-            this.hora +=horas;
-        }else
+
+    public void agregarHoras(int horas) throws Exception {
+        if (horas >= 0) {
+            this.hora += horas;
+        } else {
             throw new Exception("No se pueden agregar valores negativos.");
-        
+        }
+
     }
-    
-    public void agregarMinutos(int minutos) throws Exception{
+
+    public void agregarMinutos(int minutos) throws Exception {
         if (minutos < 0) {
             throw new Exception("No se pueden agregar valores negativos.");
-        }else{
-            this.minuto+=minutos;
-            while (this.minuto >60) {
+        } else {
+            this.minuto += minutos;
+            while (this.minuto > 60) {
                 this.agregarHoras(1);
-                this.minuto-=60;
+                this.minuto -= 60;
             }
         }
     }
-    
-    public void agregarSegundos(int segundos) throws Exception{
+
+    public void agregarSegundos(int segundos) throws Exception {
         if (segundos < 0) {
             throw new Exception("No se pueden agregar valores negativos.");
-        }else{
-            this.segundo+=segundos;
-            while (this.segundo>60) {
+        } else {
+            this.segundo += segundos;
+            while (this.segundo > 60) {
                 this.agregarMinutos(1);
-                this.segundo-=60;
+                this.segundo -= 60;
             }
         }
     }

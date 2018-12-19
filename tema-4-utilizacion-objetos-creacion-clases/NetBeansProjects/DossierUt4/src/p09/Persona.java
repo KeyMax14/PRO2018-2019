@@ -10,46 +10,46 @@ package p09;
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
 public class Persona {
+
     public String nombre;
     public String apellido;
     public int edad;
-    
-    
+
     /*
         El siguiente método es un constructor, esto significa
         que cuando llamas a la clase puedes pasarle parametros.
     
         Como se ve no se especifica lo que se devuelve, y se usa 
         el nombre de la clase en cuestión.
-    */
-
-    
-    public Persona(String nom, String ape, int edad){
+     */
+    public Persona(String nom, String ape, int edad) {
         nombre = nom;
         apellido = ape;
-        this.edad = (int)Math.abs(edad);
+        this.edad = (int) Math.abs(edad);
     }
-    
-        // Este seria el constructor por defecto.
+
+    // Este seria el constructor por defecto.
 //    public Persona(){
 //        nombre = null;
 //        apellido = null;
 //        edad = 0;
 //    }
-       
     // Lo siguiente no es recomendable, porque println solo serviria para consola.
 //    public void mostrarInfo(){
 //        System.out.println(nombre+" "+apellido+" "+edad);
 //    }
-    
-    
-    
-    public String mostrarInfo(){
-        return nombre+" "+apellido+" "+edad;
+    public String mostrarInfo() {
+        return nombre + " " + apellido + " " + edad;
     }
 
-    public static void inicio(){
+    public static void inicio() {
         System.out.println("Waaaa");
+    }
+
+    // Mod p24 - toString
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre + " Apellido: " + apellido + " Edad: " + edad;
     }
 
     public String getNombre() {
@@ -76,8 +76,7 @@ public class Persona {
         if (edad >= 0) {
             this.edad = edad;
         }
-        
+
     }
-    
-    
+
 }

@@ -11,29 +11,34 @@ package p06;
 public class Conversor {
 
     private static double tipoCambio;
-    
 
-    public Conversor(){
+    public Conversor() {
         tipoCambio = 0.85;
     }
-    
-    public Conversor(double tipoCambio){
+
+    public Conversor(double tipoCambio) {
         Conversor.tipoCambio = 0.8615;
         if (tipoCambio > 0) {
             Conversor.tipoCambio = tipoCambio;
         }
     }
-    
-    public double euroToDolar(double eur){
-        return eur/tipoCambio;
+
+    public double euroToDolar(double eur) {
+        return eur / tipoCambio;
     }
-    
-    public double dolarToEuro(double dol){
-        return dol*tipoCambio;
+
+    public double dolarToEuro(double dol) {
+        return dol * tipoCambio;
     }
-    
-    public void establecerTipo(double t){
+
+    public void establecerTipo(double t) {
         tipoCambio = t;
+    }
+
+    // Mod p24 - toString 
+    @Override
+    public String toString() {
+        return "Tipo de cambio: " + tipoCambio;
     }
 
 }

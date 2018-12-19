@@ -47,4 +47,13 @@ public class Perro {
         raza = null;
         edad = -1;
     }
+    
+    // mod p24 - toString
+
+    @Override
+    public String toString() {
+        return "Raza: "+raza+" Nombre: "+nombre+" Edad: "+edad;
+    }
+    
+    
 }

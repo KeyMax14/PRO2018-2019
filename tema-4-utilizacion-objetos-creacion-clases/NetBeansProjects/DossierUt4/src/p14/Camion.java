@@ -20,17 +20,23 @@ public class Camion {
     }
 
     public Camion(String marca) {
-        this(marca,null);
+        this(marca, null);
     }
 
     public Camion(String marca, String matricula) {
-        this(marca,0,matricula);
+        this(marca, 0, matricula);
     }
 
     public Camion(String marca, double potencia, String matricula) {
         this.marca = marca;
         this.potencia = potencia;
         this.matricula = matricula;
+    }
+
+    // Mod p24 - toString
+    @Override
+    public String toString() {
+        return "Marca: " + marca + " Potencia: " + potencia + " Matricula: " + matricula;
     }
 
     public String getMatricula() {
@@ -43,4 +49,3 @@ public class Camion {
         this.matricula = matricula;
     }
 }
-

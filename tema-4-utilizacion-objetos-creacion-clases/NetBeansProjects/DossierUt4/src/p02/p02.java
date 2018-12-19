@@ -39,6 +39,15 @@ class Persona {
     public String getNombre() {
         return nombre;
     }
+    
+    // Mod p24 - toString
+
+    @Override
+    public String toString() {
+        return "Nombre: "+nombre+" Apellido: "+apellido+" Edad: "+edad;
+    }
+    
+    
 }
 
 public class p02 {

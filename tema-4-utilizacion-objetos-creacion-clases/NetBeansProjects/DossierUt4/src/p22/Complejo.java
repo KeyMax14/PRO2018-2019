@@ -37,6 +37,12 @@ public class Complejo {
         this(0, 0);
     }
 
+    // Mod p24 - toString
+    @Override
+    public String toString() {
+        return real + ", " + imag + "i";
+    }
+
     public String mostrar() {
         return "" + real + ", " + imag + "i";
     }
@@ -51,15 +57,14 @@ public class Complejo {
     }
 
     public Complejo multiplicar(double real) {
-        return new Complejo(this.real*real, this.imag*real);
+        return new Complejo(this.real * real, this.imag * real);
     }
 
     public Complejo multiplicar(Complejo complejo) {
-        double real = this.real*complejo.real - this.imag*complejo.imag;
-        double imag = this.real*complejo.real + this.imag*complejo.imag;
+        double real = this.real * complejo.real - this.imag * complejo.imag;
+        double imag = this.real * complejo.real + this.imag * complejo.imag;
         return new Complejo(real, imag);
     }
-    
 
 //    public double getReal() {
 //        return real;
