@@ -10,7 +10,7 @@ package AdicionalFraccion;
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
 public class fraccionMain {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Fraccion fr1 = new Fraccion(1, 3);
         Fraccion fr2 = new Fraccion(1, 2);
         
