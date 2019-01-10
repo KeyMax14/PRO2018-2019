@@ -20,7 +20,7 @@ public class P03 {
         int[][] arr = new int[fila][columna];
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
-                arr[i][j] = rnd.nextInt(100);
+                arr[i][j] = rnd.nextInt(99)+1;
             }
         }
         return arr;
