@@ -27,13 +27,24 @@ package dossierut5;
 public class P05 {
 
     public static void mostrarArray(int[][] arr) {
-        for (int[] fila : arr) {
-            for (int i : fila) {
-                System.out.print(i + " ");
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[arr.length-1].length - i; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j]+" ");
             }
             System.out.println("");
         }
     }
+//    public static void mostrarArray(int[][] arr) {
+//        for (int[] fila : arr) {
+//            for (int i : fila) {
+//                System.out.print(i + " ");
+//            }
+//            System.out.println("");
+//        }
+//    }
 
     public static void main(String[] args) {
         int[][] arr = new int[20][];
