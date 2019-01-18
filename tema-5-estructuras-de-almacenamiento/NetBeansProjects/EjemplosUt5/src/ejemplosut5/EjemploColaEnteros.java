@@ -23,7 +23,7 @@ class Cola{
     
     public boolean push(int num){
         boolean resultado;
-        if (ultimo==SIZE) {
+        if (ultimo==SIZE) { // (ultimo+1)%datos.length
             resultado = false;
         }else{
             this.datos[ultimo]=num;
@@ -33,6 +33,7 @@ class Cola{
             resultado = true;
         }
         return resultado;
+        // (ultimo+1)%array.lenght
     }
     
     /*
