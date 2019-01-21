@@ -30,7 +30,7 @@ public class P16 {
         diccionario.put("Azul", "Blue");
         diccionario.put("Perro", "Dog");
         
-        System.out.println("HashMap: \n");
+        System.out.println("TreeMap: \n");
   
         Iterator it = diccionario.entrySet().iterator();
         while (it.hasNext()) {
@@ -49,8 +49,9 @@ public class P16 {
         diccionario1.put("Azul", "Blue");
         diccionario1.put("Azul", "Blue");
         diccionario1.put("Perro", "Dog");
+//        diccionario1.put("Perro", "mismaClave");
         
-        System.out.println("\nTreeMap: \n");
+        System.out.println("\nHashMap: \n");
   
         Iterator it1 = diccionario1.entrySet().iterator();
         while (it1.hasNext()) {
