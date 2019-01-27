@@ -6,7 +6,7 @@
 * La clase permitirá Introducir notas, Mostrar las notas y obtener el promedio por clase.
 
  */
-package practicaspropuestas;
+package adicionalut5;
 
 
 import java.util.HashMap;
@@ -93,7 +93,7 @@ class Ciclo {
 
 }
 
-public class ArraysBidimensionales01 {
+public class AdicionalEstudiantesCiclo {
 
 
     public static void main(String[] args) {
