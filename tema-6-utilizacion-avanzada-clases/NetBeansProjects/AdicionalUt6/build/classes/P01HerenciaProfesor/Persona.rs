@@ -1,0 +1,4 @@
+P01HerenciaProfesor.Profesor
+P01HerenciaProfesor.curso
+P01HerenciaProfesor.Curso
+P01HerenciaProfesor.Persona
