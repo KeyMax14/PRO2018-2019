@@ -15,9 +15,9 @@ import java.util.Random;
  */
 public class Cuenta {
 
-    private String numero;
-    private String titular;
-    private double saldo;
+    protected String numero;
+    protected String titular;
+    protected double saldo;
 
     // Aqui añadimos un constructor que cree el numero aleatoriamente.
     public Cuenta() {
@@ -34,6 +34,48 @@ public class Cuenta {
             }
             numero += rnd.nextInt(10);
         }
+    }
+
+    // Verificar cuenta Algoritmia
+    
+    
+    protected boolean verificarCuenta(String numeroCuenta) {
+        
+        String resultado;
+        int[] valores = {1, 2, 4, 8, 5, 10, 9, 7, 3, 6};
+        int suma = 0;
+        numeroCuenta = "00" + numeroCuenta.replaceAll("\\s", "");
+        // Con .replaceAll("\\s", "") eliminamos los espacios de la cadena, si los tuviese.
+        for (int i = 0; i < valores.length; i++) {
+            suma += valores[i] * Integer.parseInt(numeroCuenta.substring(i, i + 1));
+        }
+        suma = 11 - (suma % 11);
+
+        if (suma == 11) {
+            suma = 0;
+        } else if (suma == 10) {
+            suma = 1;
+        }
+        resultado = ""+suma;
+
+        suma = 0;
+        String numeroPersonalCuenta = numeroCuenta.substring(12);
+        //Cogemos la cadena sin los dos 0, los 8 caracteres ya analizados y los 2 digitos de control(10,11).
+        for (int i = 0; i < valores.length; i++) {
+            suma += valores[i] * Integer.parseInt(numeroPersonalCuenta.substring(i, i + 1));
+        }
+
+        suma = 11 - (suma % 11);
+
+        if (suma == 11) {
+            suma = 0;
+        } else if (suma == 10) {
+            suma = 1;
+        }
+        resultado = resultado + suma;
+        
+        return numeroCuenta.substring(10,12).equals(resultado);
+
     }
 
     public Cuenta(String numero, String titular) {
