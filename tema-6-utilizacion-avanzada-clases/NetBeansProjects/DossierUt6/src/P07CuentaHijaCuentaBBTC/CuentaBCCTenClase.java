@@ -34,17 +34,18 @@ public class CuentaBCCTenClase extends Cuenta {
  
 
     @Override
-    public void retirar(double retirada) throws Exception {
-        super.retirar(retirada); //To change body of generated methods, choose Tools | Templates.
-        super.retirar(retirada * COMISION_DESCUENTO);
+    public void retirar(double retirada, String concepto) throws Exception {
+        super.retirar(retirada, concepto); //To change body of generated methods, choose Tools | Templates.
+        super.retirar(retirada * COMISION_DESCUENTO, "Comision "+concepto);
     }
 
     @Override
-    public void ingresar(double ingreso) throws Exception {
+    public void ingresar(double ingreso, String concepto) throws Exception {
         if (this.saldo < ingreso*(1+COMISION_DESCUENTO)) {
             throw new Exception("No hay suficiente dinero.");
         }else{
-            this.saldo -= ingreso*(1+COMISION_DESCUENTO);   
+            this.saldo -= ingreso*(1+COMISION_DESCUENTO);
+            movimientos.add(new Movimiento(concepto, ingreso));
         }
     }
 }

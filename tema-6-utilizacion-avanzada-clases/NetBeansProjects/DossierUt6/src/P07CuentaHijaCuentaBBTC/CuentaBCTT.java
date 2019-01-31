@@ -27,15 +27,27 @@ public class CuentaBCTT extends Cuenta{
     
     
     @Override
+    public void retirar(double retirada, String concepto) throws Exception {
+        super.retirar(retirada, concepto); //To change body of generated methods, choose Tools | Templates.
+        super.retirar(retirada*0.002, "Comision "+concepto);
+    }
+
+    @Override
     public void retirar(double retirada) throws Exception {
-        super.retirar(retirada); //To change body of generated methods, choose Tools | Templates.
-        super.retirar(retirada*0.002);
+        this.retirar(retirada, "*");
+    }
+    
+    @Override
+    public void ingresar(double ingreso, String concepto) throws Exception {
+        super.ingresar(ingreso, concepto); 
+        super.retirar(0.50, "Comision "+concepto);
     }
 
     @Override
     public void ingresar(double ingreso) throws Exception {
-        super.ingresar(ingreso); //To change body of generated methods, choose Tools | Templates.
-        super.retirar(0.50);
+        this.ingresar(ingreso,"*"); 
     }
+    
+    
     
 }
