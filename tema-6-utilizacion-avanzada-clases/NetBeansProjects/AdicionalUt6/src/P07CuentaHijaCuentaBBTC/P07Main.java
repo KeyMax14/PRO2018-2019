@@ -13,8 +13,12 @@ public class P07Main {
     public static void main(String[] args) throws Exception {
         CuentaBCTT cuenta = new CuentaBCTT("0156456", "Josue");
         
-        cuenta.ingresar(50);
+        cuenta.ingresar(50, "devolucion");
         
         System.out.println(cuenta.toString());
+        
+//        System.out.println(cuenta.listado());
+        System.out.println(cuenta.listadoConcepto());
+        System.out.println(cuenta.listadoConceptoEntry());
     }
 }
