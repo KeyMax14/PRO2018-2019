@@ -1,0 +1,45 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>490</x><y>124</y><w>170</w><h>90</h></coordinates><panel_attributes>Persona
+--
+-dni: Dni
+-nombre: String
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>780</x><y>124</y><w>160</w><h>90</h></coordinates><panel_attributes>Dni
+--
+-dni: String
+--
++validar()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>304</y><w>170</w><h>100</h></coordinates><panel_attributes>Estudiante
+--
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>760</x><y>314</y><w>170</w><h>90</h></coordinates><panel_attributes>EstudianteDeGrado
+--
+-titulacion: String
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>850</x><y>604</y><w>170</w><h>90</h></coordinates><panel_attributes>Departamento
+--
+-nombre: String
+-titulaciones: []String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>294</y><w>170</w><h>60</h></coordinates><panel_attributes>Trabajador
+--
+-fechaInicio: String
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>540</x><y>604</y><w>170</w><h>90</h></coordinates><panel_attributes>Universidad
+--
+-nombre: String
+-ciudad: String
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>650</x><y>154</y><w>150</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>10;10;130;10</additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>204</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>640</x><y>344</y><w>140</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;120;10</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>184</y><w>280</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>260;10;10;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>320</x><y>464</y><w>170</w><h>70</h></coordinates><panel_attributes>Expediente
+--
+-expediente: String
+--
++validarExpediente()
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>374</y><w>120</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes><additional_attributes>100;10;10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>400</y><w>80</w><h>220</h></coordinates><panel_attributes>lt=-
+m1=1..n
+m2=1
+estudia en</panel_attributes><additional_attributes>10;10;10;200</additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>350</y><w>350</w><h>350</h></coordinates><panel_attributes>lt=-
+m1=1..n
+m2=1
+trabaja en &gt;</panel_attributes><additional_attributes>10;10;10;320;330;320</additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>650</y><w>170</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1..n</panel_attributes><additional_attributes>10;10;150;10</additional_attributes></element></diagram>
