@@ -17,12 +17,13 @@ public class Hombre extends Persona{
 
     @Override
     protected double pesoIdeal() {
-        return altura - 100 - ( (100 - 150)/4 );
+        // A – 100 – [ ( A – 150 ) / 4 ] + [ ( E – 20 ) / k ]
+        return altura - 100 -(( altura -150 ) / (double)4) +(( edad - 20 ) / (double)4) ;
     }
 
     @Override
     public String toString() {
-        return super.toString()+" "+this.pesoIdeal();
+        return super.toString()+" Peso ideal: "+this.pesoIdeal();
     }
     
     

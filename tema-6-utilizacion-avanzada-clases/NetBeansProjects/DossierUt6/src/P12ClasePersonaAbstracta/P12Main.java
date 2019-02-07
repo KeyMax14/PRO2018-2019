@@ -11,8 +11,8 @@ package P12ClasePersonaAbstracta;
  */
 public class P12Main {
     public static void main(String[] args) {
-        Hombre h = new Hombre("Hombre", "Macho", "Macho", 10, 180, 60);
-        Mujer m = new Mujer("Mujer", "Hembra", "Hembra", 10, 180, 60);
+        Hombre h = new Hombre("Hombre", "Macho", "Macho", 18, 175, 73);
+        Mujer m = new Mujer("Mujer", "Hembra", "Hembra", 20, 180, 60);
         
         System.out.println(m);
         System.out.println(h);
