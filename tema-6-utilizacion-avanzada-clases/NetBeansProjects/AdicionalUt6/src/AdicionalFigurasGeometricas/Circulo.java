@@ -3,25 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DiagramaClaseACodigo;
+package AdicionalFigurasGeometricas;
 
 /**
  *
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
-public abstract class Persona {
-    Dni dni;
-    String nombre;
+public class Circulo extends FigurasGeometricas{
+    double radio;
 
-    public Persona(Dni dni, String nombre) {
-        this.dni = dni;
-        this.nombre = nombre;
+    public Circulo(double radio) {
+        super(1, 3.14*radio*radio);
+        this.radio = radio;
     }
-    
+
     @Override
     public String toString() {
-        return  ""+dni + ", nombre=" + nombre + "}" ;
+        return "Circulo{" + "radio=" + radio +" "+super.toString();
     }
+
+
     
     
+     
 }

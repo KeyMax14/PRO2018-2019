@@ -28,4 +28,10 @@ public class Expediente {
     public static boolean validadorExpediente(String expediente){
         return expediente.matches("[A-Z][0-9]{3}-[0-9]{3}");
     }
+
+    @Override
+    public String toString() {
+        return " expediente=" + expediente + ' ';
+    }
+    
 }

@@ -17,6 +17,11 @@ public class EstudianteDeGrado extends Estudiante{
         this.titulacion = titulacion;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + " titulación: "+titulacion; //To change body of generated methods, choose Tools | Templates.
+    }
+
     
     
     

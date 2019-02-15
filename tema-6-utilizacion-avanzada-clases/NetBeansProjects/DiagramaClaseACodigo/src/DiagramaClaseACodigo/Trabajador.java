@@ -20,6 +20,9 @@ public class Trabajador extends Persona{
     }
 
     
-    
+    @Override
+    public String toString() {
+        return "Trabajador{" + "fechaInicio=" + fechaInicio + super.toString();
+    }
     
 }

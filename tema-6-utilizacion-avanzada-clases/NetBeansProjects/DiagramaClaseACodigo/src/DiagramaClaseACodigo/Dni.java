@@ -40,4 +40,11 @@ public class Dni {
         }
     }
 
+    @Override
+    public String toString() {
+        return " dni=" + dni + ' ';
+    }
+    
+    
+
 }

@@ -9,12 +9,18 @@ package DiagramaClaseACodigo;
  *
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
-public class Estudiante extends Persona{
+public class Estudiante extends Persona {
+
     Expediente expediente;
 
     public Estudiante(Expediente expediente, Dni dni, String nombre) {
         super(dni, nombre);
         this.expediente = expediente;
+    }
+
+    @Override
+    public String toString() {
+        return "Estudiante{" + expediente + super.toString();
     }
 
 }

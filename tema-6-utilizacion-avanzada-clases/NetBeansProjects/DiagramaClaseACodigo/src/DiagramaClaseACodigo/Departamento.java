@@ -5,6 +5,7 @@
  */
 package DiagramaClaseACodigo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -30,18 +31,51 @@ enum Titulaciones{
 }
 public class Departamento {
     String nombre;
-    HashSet<Titulaciones> titulaciones;
+    ArrayList<Titulaciones> titulaciones;
     Universidad universidad;
-    HashMap<Dni, EstudianteDeGrado> estudiantes;
+    HashMap<String, EstudianteDeGrado> estudiantes;
 
     public Departamento(String nombre, Universidad universidad) {
         this.nombre = nombre;
-        this.titulaciones = new HashSet<>();
+        this.titulaciones = new ArrayList<>();
         this.universidad = universidad;
         estudiantes = new HashMap<>();
     }
     
+    public String listadoTitulaciones(){
+        String resultado = "";
+        int i = 0;
+        for (Titulaciones titulacion : titulaciones) {
+            resultado+=(i++) + ") " + titulacion+"\n";
+        }
+        return resultado;
+    }
+    
+    public String listadoEstudiantes(){
+        String resultado = "";
+        
+        for (EstudianteDeGrado estudiante : estudiantes.values()) {
+            resultado += estudiante+"\n";
+        }
+        return resultado;
+    }
+    
+    
     public void agregarTitulaciones(Titulaciones t){
         titulaciones.add(t);
     }
+
+    @Override
+    public String toString() {
+        String tit= "Titulaciones: ";
+        
+        for (int i = 0; i < titulaciones.size()-1; i++) {
+            tit += titulaciones.get(i)+", ";
+        }
+        tit += titulaciones.get(titulaciones.size()-1);
+        
+        return "Departamento{" + "nombre= " + nombre + ", " + tit + '}';
+    }
+    
+    
 }
