@@ -57,5 +57,42 @@ public class main {
         };
         
         System.out.println(Operaciones.reducir(enteros, r));
+        
+        
+        ArrayList<Integer> res;
+        ArrayList<Integer> res1;
+        
+        // Filtrar números mayores de 4
+        
+        res = Operaciones.filtrar(enteros, (p) -> (int)p >4);
+        
+        System.out.println(res);
+        
+        // Filtrar numeros pares
+        
+        
+        res1 = Operaciones.filtrar(enteros, (p) -> (int)p%2 == 0);
+        
+        System.out.println(res1);
+        
+        // Filtrar por los textos que empiezan por 'a'
+        
+        ArrayList<String> ress = Operaciones.filtrar(alCadena, p -> ((String)p).charAt(0)=='a');
+        
+        System.out.println(ress);
+        
+        // Filtratr mayor que 18
+        
+        ArrayList<Persona> personas = new ArrayList<>();
+        
+        personas.add(new Hombre("Tio", "1", "", 20, 158, 250));
+        personas.add(new Hombre("Tio", "2", "", 1, 158, 250));
+        personas.add(new Hombre("Tio", "3", "", 50, 158, 250));
+        personas.add(new Hombre("Tio", "4", "", 20, 158, 250));
+        
+        ArrayList<Persona> nuevo = Operaciones.filtrar(personas, p -> ((Persona)p).edad>18);
+        
+        System.out.println(nuevo);
+        
     }
 }

@@ -45,16 +45,51 @@ public class Operaciones {
 
     @FunctionalInterface
     interface Reducible<T> {
+
         T reducir(T o1, T o2);
     }
 
     public static Object reducir(ArrayList arr, Reducible s) {
-        
+
         Object acumulado = arr.get(0);
         for (int i = 1; i < arr.size(); i++) {
             acumulado = s.reducir(acumulado, arr.get(i));
-            
+
         }
         return acumulado;
+    }
+
+    @FunctionalInterface
+    interface filtrable<T> {
+
+        boolean filtrar(T o1);
+    }
+    
+    
+
+    @FunctionalInterface
+    interface filtrable1<T> {
+
+        boolean filtrar(T o1);
+
+        static ArrayList filtrar(ArrayList arr, filtrable f) {
+            ArrayList res = new ArrayList();
+            for (int i = 0; i < arr.size(); i++) {
+                if (f.filtrar(arr.get(i))) {
+                    res.add(arr.get(i));
+                }
+            }
+            return res;
+        }
+    }
+
+    public static ArrayList filtrar(ArrayList arr, filtrable f) {
+        ArrayList res = new ArrayList();
+        for (int i = 0; i < arr.size(); i++) {
+            if (f.filtrar(arr.get(i))) {
+                res.add(arr.get(i));
+            }
+        }
+        return res;
     }
 }
