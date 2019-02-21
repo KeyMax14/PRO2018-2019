@@ -1,0 +1,4 @@
+P03PersonaGetterSetter.Alumno
+P03PersonaGetterSetter.Curso
+P03PersonaGetterSetter.Persona
+P03PersonaGetterSetter.Profesor

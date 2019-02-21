@@ -1,0 +1,2 @@
+P09ClaseLibro.VolumenLibro
+P09ClaseLibro.EstadoConservacion

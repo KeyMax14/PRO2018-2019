@@ -1,0 +1,4 @@
+P04ClaseProfesorConstructor.Profesor
+P04ClaseProfesorConstructor.Curso
+P04ClaseProfesorConstructor.Alumno
+P04ClaseProfesorConstructor.Persona
