@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Kevin Hernández García <kevinhg94@gmail.com>
+ * @author Kevin Hernández García y Pablo Viera Martín
  */
 public class Main {
 
