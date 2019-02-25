@@ -175,5 +175,15 @@ public class StreamMain {
 //                      mujeres.add((Mujer)p);
 //                  }
 //                });
+
+
+        // Práctica 43: Crear un arraylist de hombres con un elemento hombre por cada persona del array original
+        
+        ArrayList<Hombre> hombres1 = (ArrayList<Hombre>)personas.stream()
+                //.map(p -> new Hombre(p))
+                .map(Hombre::new )
+                .collect(Collectors.toList());
+        
+        System.out.println(hombres1);
     }
 }

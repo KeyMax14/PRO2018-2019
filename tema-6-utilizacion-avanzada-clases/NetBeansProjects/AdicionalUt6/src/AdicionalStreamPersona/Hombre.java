@@ -17,6 +17,10 @@ import AlumnoLambda.*;
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
 public class Hombre extends Persona{
+    
+    public Hombre(Persona p){
+        super(p.nombre, p.apellido1, p.apellido2, p.edad, p.altura, p.peso);
+    }
 
     public Hombre(String nombre, String apellido1, String apellido2, int edad, int altura, double peso) {
         super(nombre, apellido1, apellido2, edad, altura, peso);
