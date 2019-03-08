@@ -1,0 +1,4 @@
+AdicionalVotosPartidosEnClase.Partido1
+AdicionalVotosPartidosEnClase.Elecciones
+AdicionalVotosPartidosEnClase.Partido
+AdicionalVotosPartidosEnClase.Resultados

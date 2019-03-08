@@ -27,7 +27,7 @@ public class CuentaBCCTenClase extends Cuenta {
 
     public CuentaBCCTenClase(String numero, String titular) throws Exception {
         super(numero, titular);
-        if (numero.substring(0,3).equals("7214")) {
+        if (!numero.substring(0,3).equals("7214")) {
             throw new Exception("El número no es de este banco.");
         }
     }
