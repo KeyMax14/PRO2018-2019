@@ -1,4 +1,4 @@
-
+﻿
 
 //Obtener el imc mínimo ( el número ) y mostrar por cada
 //persona su imc
@@ -11,7 +11,7 @@
 
 //crear un arraylist con las mujeres, y obtener la edad media de los hombres
         ArrayList<Mujer> mujeres = new ArrayList<Mujer>();
-        double edadMediaHombres = personas.stream()...
+        //double edadMediaHombres = personas.stream()...
 
 
 
@@ -46,7 +46,7 @@
 //Por cada persona generar tres pesos aleatorios que estén entre +-5 respecto al peso de la persona
 //mostrar todos los pesos generados y calcular la media de esos pesos. Si los números aleatorios
 //están bien generados esa media no debiera diferir mucho del peso medio de las personas del array
-( crear un arraylist con los tres pesos generados para volcarlo todo en el stream es una opción a considerar )
+//( crear un arraylist con los tres pesos generados para volcarlo todo en el stream es una opción a considerar )
 
 
 

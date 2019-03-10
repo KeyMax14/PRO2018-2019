@@ -1,0 +1,26 @@
+//1) Mostrar el salario más alto de los profesores
+
+//2) Mostrar el salario medio de los profesores
+
+//3) Mostrar cuál es la máxima cantidad de asignaturas de las que hay
+//matriculado un alumno ( contar las asignaturas que tiene cada alumno y mostrar la cantidad máxima entre esas )
+
+//4) mostrar nombre, apellido altura y peso para las personas que tienen 
+//sobrepeso ( imc >= 25 ) Sabiendo que la fórmula de imc es:
+//   peso / altura^2     Donde peso está en kg y altura en m
+
+//5) mostrar las dos alturas distintas más bajas
+
+//6) Decir: hay profesores en el array si se encuentran profesores 
+// no se puede usar for ni bucles habituales y únicamente un método de stream ( no pueden usarse varios )
+// máximo 3 líneas de código( es inválido varias sentencias en una única línea:  int a; a=3; a++;  )
+
+// 6.1 Obtener un ArrayList con las personas llamadas Ana
+
+//7) mostrar en mayúsculas los diferentes departamentos que aparecen en el arraylist 
+//ordenados alfabéticamente
+
+// 8) obtenener y mostrar la cantidad de profesores por cada departamento
+// no se deben mostrar los departamentos que no tienen ningún profesor
+
+// 9) obtener el porcentaje de profesores del array ( 100* cantidad profesores / tamaño del array   )

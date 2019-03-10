@@ -459,23 +459,7 @@ public class StreamMain {
 
 
 
-       //mostrar ordenado para cada edad distinta presente, cuantas personas tienen esa edad
-       
-       personas.stream()
-               .mapToInt(p-> p.edad)
-               .distinct()
-               .sorted()
-               .forEach(edad ->{
-                   System.out.println("Edad:" + edad);
-                   
-                   long numeroPersonas = personas.stream()
-                           .filter(p-> p.edad == edad)
-                           .count();
-                   System.out.println(numeroPersonas);
-               
-               });
-       
-       
+
 
     }
 }
