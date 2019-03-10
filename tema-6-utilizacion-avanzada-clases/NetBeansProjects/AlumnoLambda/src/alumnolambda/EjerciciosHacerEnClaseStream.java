@@ -395,6 +395,7 @@ public class EjerciciosHacerEnClaseStream {
         double minDif2 = personas.stream()
                 .mapToDouble(p -> {
                     return personas.stream()
+                            .filter(q-> p != q)
                             .mapToDouble(q -> Math.abs(p.pesoEnKg - q.pesoEnKg))
                             .min()
                             .getAsDouble();
@@ -408,6 +409,8 @@ public class EjerciciosHacerEnClaseStream {
 //mostrar todos los pesos generados y calcular la media de esos pesos. Si los números aleatorios
 //están bien generados esa media no debiera diferir mucho del peso medio de las personas del array
 //( crear un arraylist con los tres pesos generados para volcarlo todo en el stream es una opción a considerar )
+        System.out.println("\n3 Pesos aleatorios por cada persona(5kg +- su peso), media de estos:\n");
+
         personas.stream()
                 .flatMap(p -> {
                     Random rnd = new Random();
@@ -420,7 +423,7 @@ public class EjerciciosHacerEnClaseStream {
                 .peek(System.out::println)
                 .mapToDouble(p-> p)
                 .average()
-                .ifPresent(System.out::println);
+                .ifPresent(p-> System.out.println("\nPeso Medio: "+p));
         
 
     }
