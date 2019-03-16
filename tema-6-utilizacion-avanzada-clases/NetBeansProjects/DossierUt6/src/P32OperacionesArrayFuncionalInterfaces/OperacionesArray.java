@@ -11,13 +11,18 @@ import java.util.ArrayList;
  *
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
+@FunctionalInterface
 interface Convert2to1<T> {
 
     T reducir(T t1, T t2);
 }
-
+@FunctionalInterface
 interface Filtrar<T>{
     boolean filtrar(T t);
+}
+@FunctionalInterface
+interface Consumible<T>{
+    void consumir(T obj);
 }
 
 public class OperacionesArray<T> {
@@ -46,6 +51,12 @@ public class OperacionesArray<T> {
             }
         }
         return arr;
+    }
+    
+    void porCadaUno(T[] array, Consumible<T> c){
+        for (T t : array) {
+            c.consumir(t);
+        }
     }
 
 

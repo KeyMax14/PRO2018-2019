@@ -17,6 +17,11 @@ public class Hombre extends Persona {
         super(nombre, ape1, edad, altura, peso);
         tieneBarba=true;
     }
+    
+    public Hombre(Persona p){
+       super(p.nombre, p.apellido1, p.edad, p.alturaEnCm, p.pesoEnKg);
+       tieneBarba = false;
+    }
 
     
     public String toString(){

@@ -46,7 +46,7 @@ public class FuncionalInterfaceOperacionesArray {
         System.out.println(pares);
 //Obtener un arraylist con los números al cuadrado
         ArrayList<Integer> cuadrados = new ArrayList<Integer>();
-//        ra.porCadaUno(array, a -> cuadrados.add((int) a * (int) a));
-//        System.out.println(cuadrados.toString());
+        ra.porCadaUno(array, a -> cuadrados.add((int) a * (int) a));
+        System.out.println(cuadrados.toString());
     }
 }

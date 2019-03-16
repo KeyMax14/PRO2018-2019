@@ -79,7 +79,17 @@ public class main {
         
         ArrayList<String> ress = Operaciones.filtrar(alCadena, p -> ((String)p).charAt(0)=='a');
         
+        Operaciones.filtrable<String> filtrableA = new Operaciones.filtrable<String>() {
+            @Override
+            public boolean filtrar(String o1) {
+                return o1.toLowerCase().charAt(0) == 'a';
+            }
+        };
+        
+        ArrayList<String> ressAnonima = Operaciones.filtrar(alCadena, filtrableA);
+        
         System.out.println(ress);
+        System.out.println(ressAnonima);
         
         // Filtratr mayor que 18
         

@@ -14,8 +14,6 @@ import java.util.ArrayList;
 public class Operaciones {
 
     interface Ordenable<T> {
-
-        // No permite static 
         boolean esMayorQue(T obj, T obj2);
     }
 
