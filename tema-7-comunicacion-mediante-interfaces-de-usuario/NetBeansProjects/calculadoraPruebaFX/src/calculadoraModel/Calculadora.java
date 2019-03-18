@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Calculadora;
+package calculadoraModel;
 
 /**
  *
@@ -21,17 +21,17 @@ public class Calculadora {
         operacionEnCurso = false;
     }
 
-    void limpiar() {
+    public void limpiar() {
         numEnMemoria = 0;
         operador = "";
         operacionEnCurso = false;
     }
     
-    void operar(String operacion){
+    public void operar(String operacion){
         operador = operacion;
     }
 
-    void cargarNumero(int num) {
+    public void cargarNumero(int num) {
         if (!operacionEnCurso) {
             numEnMemoria = num;
             operacionEnCurso = true;
@@ -66,7 +66,11 @@ public class Calculadora {
         }
     }
     
-    String getResultado(){
+    public boolean getEstado(){
+        return operacionEnCurso;
+    };
+    
+    public String getResultado(){
         return ""+numEnMemoria;
     }
 
