@@ -70,6 +70,9 @@ public class FXMLDocumentController implements Initializable {
 //        int num = Integer.parseInt(btnNumerico.getText());
 //        calc.cargarNumero(num);
 //        txtResultado.setText(calc.getResultado());
+        if (txtResultado.getText().equals(calc.getResultado()) || txtResultado.getText().equals("0")) {
+            txtResultado.setText("");
+        }
         Button btnNumero = (Button) event.getSource();
         txtResultado.setText(txtResultado.getText() + btnNumero.getText());
     }
@@ -78,7 +81,8 @@ public class FXMLDocumentController implements Initializable {
     private void introOperador(ActionEvent event) {
         int num = Integer.parseInt(txtResultado.getText());
         calc.cargarNumero(num);
-        txtResultado.setText("");
+//        txtResultado.setText("");
+        txtResultado.setText(calc.getResultado());
         calc.operar(((Button) event.getSource()).getText());
     }
 
@@ -86,7 +90,7 @@ public class FXMLDocumentController implements Initializable {
     private void introLimpiar(ActionEvent event) {
         calc.limpiar();
 //        txtResultado.setText(calc.getResultado());
-        txtResultado.setText("");
+        txtResultado.setText("0");
     }
 
     @FXML

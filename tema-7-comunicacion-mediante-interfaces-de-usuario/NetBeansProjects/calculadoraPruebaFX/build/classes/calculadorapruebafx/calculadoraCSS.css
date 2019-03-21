@@ -8,7 +8,9 @@ and open the template in the editor.
     Author     : Kevin Hernández García <kevinhg94@gmail.com>
 */
 
-
+#btnAc{
+    -fx-font-size: 20px;
+}
 
 .button{
     -fx-height: 100px;
@@ -21,6 +23,7 @@ and open the template in the editor.
 
 .button:hover{
     -fx-background-color: #879161;
+    -fx-border-width:2px;
 }
 
 .button:pressed{
