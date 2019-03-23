@@ -1,0 +1,21 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22-mar-2019, 14:32:27
+    Author     : Kevin Hernández García <kevinhg94@gmail.com>
+*/
+
+#btnPlanta{
+    -fx-background-image: url("../images/planta.png");
+    -fx-background-size: 100%; /* 50px 40px*/
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.root{
+    
+    
+}
