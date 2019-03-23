@@ -9,7 +9,7 @@ package modelo;
  *
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
-public class Coche {
+public class Coche implements Posicionable{
 
     private String nombre;
     private boolean encendido;

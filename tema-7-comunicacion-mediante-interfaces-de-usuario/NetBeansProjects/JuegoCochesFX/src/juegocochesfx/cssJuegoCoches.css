@@ -1,0 +1,20 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 23-mar-2019, 21:47:58
+    Author     : Kevin Hernández García <kevinhg94@gmail.com>
+*/
+
+#btnInstrucciones{
+    -fx-background-image: url("../images/coche.png");
+    -fx-background-size: 100%; /* 50px 40px*/
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+#paneEscenario{
+    -fx-background-color: #c9cfd8;
+}

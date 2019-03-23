@@ -5,19 +5,10 @@
  */
 package modelo;
 
-import java.util.HashSet;
-
 /**
  *
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
-public class Escenario {
-    Punto inicio;
-    Punto fin;
-    HashSet<Posicionable> vehiculos;
-    
-    // Quizas mejor el hashSet
-//    ArrayList<Coche> coches;
-    
+public interface Posicionable {
     
 }
