@@ -6,18 +6,44 @@
 package modelo;
 
 import java.util.HashSet;
+import java.util.Random;
 
 /**
  *
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
 public class Escenario {
+
     Punto inicio;
     Punto fin;
-    HashSet<Posicionable> vehiculos;
-    
+    public HashSet<Posicionable> vehiculos;
+
     // Quizas mejor el hashSet
 //    ArrayList<Coche> coches;
+    public Escenario(Punto inicio, Punto fin) {
+        this.inicio = inicio;
+        this.fin = fin;
+        vehiculos = new HashSet<>();
+    }
+
+    public Escenario() {
+        this(new Punto(0, 0), new Punto(0, 0));
+    }
+
+    public void set(Punto inicio, Punto fin) {
+        this.inicio = inicio;
+        this.fin = fin;
+    }
     
+    public void set(double iniX, double iniY, double finX, double finY){
+        set(new Punto(iniX, iniY), new Punto(finX, finY));
+    }
     
+    public Punto puntoAleatorio(){
+        Random rnd = new Random();
+        Punto puntoAleatorio = new Punto(inicio.getX()+rnd.nextInt((int)fin.getX()-(int)inicio.getX()+1)
+                , inicio.getY()+rnd.nextInt((int)fin.getY()-(int)inicio.getY()+1));
+        return puntoAleatorio;
+    }
+
 }

@@ -6,18 +6,21 @@
 package juegocochesfx;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import modelo.Coche;
+import modelo.Escenario;
+import modelo.Posicionable;
+import modelo.Punto;
 
 /**
  *
@@ -31,6 +34,8 @@ enum CocheSeleccionado {
 public class FXMLDocumentController implements Initializable {
 
     CocheSeleccionado cocheSeleccionado;
+    Escenario escenario;
+    ArrayList<Posicionable> vehiculos;
 
     @FXML
     /*
@@ -50,6 +55,23 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         cocheSeleccionado = cocheSeleccionado.COCHE1;
+        // ¿Como le digo el layout del pane, para puntoIni puntoFin de escenario?
+//        escenario = new Escenario(new Punto(paneEscenario., 0), fin)
+       
+
+        // Mirar en clase.
+//        Punto aleatorio = escenario.puntoAleatorio();
+//        ivCoche1.setLayoutX(aleatorio.getX());
+//        ivCoche1.setLayoutX(aleatorio.getY());
+//        Punto aleatorio2;
+//        do {
+//            aleatorio2 = escenario.puntoAleatorio();
+//        } while (aleatorio.equals(aleatorio2));
+//        ivCoche2.setLayoutX(aleatorio2.getX());
+//        ivCoche2.setLayoutX(aleatorio2.getY());
+//        vehiculos.add(new Coche("Coche1", escenario, new Punto(ivCoche1.getLayoutX(), ivCoche1.getLayoutY())));
+//        vehiculos.add(new Coche("Coche2", escenario, new Punto(ivCoche2.getLayoutX(), ivCoche2.getLayoutY())));
+//        escenario.vehiculos.addAll(vehiculos);
     }
 
     @FXML
