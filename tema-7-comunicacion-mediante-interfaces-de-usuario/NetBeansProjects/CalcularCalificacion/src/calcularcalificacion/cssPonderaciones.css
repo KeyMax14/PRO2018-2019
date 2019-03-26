@@ -13,5 +13,8 @@ and open the template in the editor.
 }
 
 .label{
-    -fx-text-alignment: right;
+/*    
+    -fx-background: blue;*/
+/*    -fx-border-color: #ffff33;
+    -fx-border-width:2px;*/
 }

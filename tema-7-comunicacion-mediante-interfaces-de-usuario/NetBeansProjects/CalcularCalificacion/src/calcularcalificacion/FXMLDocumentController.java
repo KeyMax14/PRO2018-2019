@@ -9,12 +9,21 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import modelo.Ponderaciones;
@@ -65,57 +74,124 @@ public class FXMLDocumentController implements Initializable {
 //        gridContenedor.setPadding(new Insets(10,10,10,10));
     }
 
+    Dialog crearDialogoInputTextArea(String notasLabel, double ponderacion) {
+
+        Dialog dialog = new Dialog<>();
+        dialog.setTitle("input notas ponderadas");
+        dialog.setHeaderText("ver/editar notas de la ponderación elegida");
+
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+        TextArea txaNotas = new TextArea();
+
+        txaNotas.setText(notasLabel);
+        dialog.getDialogPane().setContent(txaNotas);
+        dialog.setResultConverter(button -> {
+            if (button == ButtonType.OK) {
+                return txaNotas.getText();
+            } else {
+                return null;
+            }
+        });
+        return dialog;
+    }
+
     @FXML
     private void introPonderacion(MouseEvent event) {
-        if (txtPonderacion.getText().matches("^(([0-9]+(\\.[0-9]+)?)|(\\.[0-9]+))$")) {
+        if (autoIncremental >= 8) {
+            txtPonderacion.setText("Límite Superado.");
+        } else {
+
+            if (txtPonderacion.getText().matches("^(([0-9]+([\\.,][0-9]+)?)|([\\.,][0-9]+))$")) {
 //            ArrayList<ObjetosEnGrid> objetosGrid = new ArrayList<>(mapaGrid.values());
 //            if (objetosGrid.stream().anyMatch(p -> p.btn.getText().equals(txtPonderacion.getText()))) {
-            if (Arrays.stream(mapaGrid.values().toArray())
-                    .map(p -> (ObjetosEnGrid) p)
-                    .anyMatch(p -> {
-                        String ponderacionNueva = "" + Double.parseDouble(txtPonderacion.getText());
-                        return ponderacionNueva.equals(p.btn.getText());
-                    })
-            ){
+                if (Arrays.stream(mapaGrid.values().toArray())
+                        .map(p -> (ObjetosEnGrid) p)
+                        .anyMatch(p -> {
+                            String ponderacionNueva = "" + Double.parseDouble(txtPonderacion.getText().replaceAll(",", "."));
+                            return ponderacionNueva.equals(p.btn.getText());
+                        })) {
 
-                txtPonderacion.setText("Ponderación duplicada.");
-            } else {
-                Label lbl = new Label("");
-                TextField txt = new TextField("");
-                Button btn = new Button();
-                btn.setText("" + Double.parseDouble(txtPonderacion.getText()));
+                    txtPonderacion.setText("Ponderación duplicada.");
+                } else {
+                    Label lbl = new Label("        ");
+                    lbl.setAlignment(Pos.CENTER_RIGHT);
+                    lbl.addEventHandler(MouseEvent.MOUSE_CLICKED, evt -> pulsarNotas(evt));
+                    TextField txt = new TextField("");
+                    txt.addEventHandler(KeyEvent.KEY_PRESSED, evt -> enterNotas(evt));
+                    Button btn = new Button();
+                    btn.setText("" + Double.parseDouble(txtPonderacion.getText().replaceAll(",", ".")));
 //                btn.setText("" + txtPonderacion.getText());
-                btn.addEventHandler(MouseEvent.MOUSE_CLICKED, evt -> agregarNota(evt));
-                gridContenedor.addRow(autoIncremental, lbl, txt, btn);
-                mapaGrid.put(btn, new ObjetosEnGrid(btn, txt, lbl));
-                autoIncremental++;
-                txtPonderacion.setText("");
-                // Posible método mediante ID
-                //        btn.setId("btn"+i);
-                //        lbl.setId("btn"+i);
-                //        txt.setId("btn"+i);
-                //        gridContenedorRuntime.add(lbl, 1, 0);
-                //        gridContenedorRuntime.add(btn, 1, 1);
-            }
+                    btn.addEventHandler(MouseEvent.MOUSE_CLICKED, evt -> pulsarBotonPonderacion(evt));
+                    gridContenedor.addRow(autoIncremental, lbl, txt, btn);
+                    mapaGrid.put(btn, new ObjetosEnGrid(btn, txt, lbl));
+                    autoIncremental++;
+                    txtPonderacion.setText("");
+                    // Posible método mediante ID
+                    //        btn.setId("btn"+i);
+                    //        lbl.setId("btn"+i);
+                    //        txt.setId("btn"+i);
+                    //        gridContenedorRuntime.add(lbl, 1, 0);
+                    //        gridContenedorRuntime.add(btn, 1, 1);
+                }
 
-        } else {
-            txtPonderacion.setText("Valor no válido.");
+            } else {
+                txtPonderacion.setText("Valor no válido.");
+            }
         }
 
     }
 
-    private void agregarNota(MouseEvent event) {
+    private void enterNotas(KeyEvent event) {
+        KeyCode kc = event.getCode();
+        if (kc == KeyCode.ENTER) {
+            TextField textoSeleccionado = (TextField) event.getSource();
+            System.out.println("Intro PULSADO!!!");
+            Button botonAPulsar = Arrays.stream(mapaGrid.values().toArray())
+                    .map(p -> (ObjetosEnGrid) p)
+                    .filter(p -> p.txt.equals(textoSeleccionado))
+                    .findFirst()
+                    .get().btn;
+            
+//            botonAPulsar.fireEvent(new Event(MouseEvent.MOUSE_PRESSED));
+            
+        }
+    }
+
+    private void pulsarNotas(MouseEvent event) {
+        Label etiquetaPulsada = (Label) event.getSource();
+
+        ObjetosEnGrid objetosActuales = Arrays.stream(mapaGrid.values().toArray())
+                .map(p -> (ObjetosEnGrid) p)
+                .filter(p -> p.lbl.equals(etiquetaPulsada))
+                .findFirst()
+                .get();
+
+        Dialog dialog = crearDialogoInputTextArea(objetosActuales.lbl.getText(), Double.parseDouble(objetosActuales.btn.getText()));
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            //codigo en el caso de que la ventana emergente devuelva algo
+            objetosActuales.lbl.setText(result.get());
+            objetosActuales.txt.setText("");
+            agregarNotas(objetosActuales);
+        }
+
+    }
+
+    private void pulsarBotonPonderacion(MouseEvent event) {
 //        System.out.println("Evento Creado en tiempo de ejecución.");
 
         Button btnPulsado = ((Button) event.getSource());
         ObjetosEnGrid objetosActuales = mapaGrid.get(btnPulsado);
-        calificaciones.restartNotas();
         objetosActuales.lbl.setText(objetosActuales.lbl.getText() + " " + objetosActuales.txt.getText());
         objetosActuales.txt.setText("");
+        agregarNotas(objetosActuales);
+    }
 
+    private void agregarNotas(ObjetosEnGrid objetosActuales) {
+        calificaciones.restartNotas();
         for (ObjetosEnGrid value : mapaGrid.values()) {
-            if (!value.lbl.equals("")) {
-                calificaciones.agregarNota(Double.parseDouble(value.btn.getText()), value.lbl.getText());
+            if (!value.lbl.getText().equals("")) {
+                calificaciones.agregarNota(Double.parseDouble(value.btn.getText()), value.lbl.getText().replaceAll(",", "."));
             }
         }
         objetosActuales.lbl.setText(calificaciones
