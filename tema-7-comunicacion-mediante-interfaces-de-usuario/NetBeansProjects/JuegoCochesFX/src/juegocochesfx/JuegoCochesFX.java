@@ -23,6 +23,7 @@ public class JuegoCochesFX extends Application {
         
         Scene scene = new Scene(root);
         stage.setTitle("Juego Coche FX");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

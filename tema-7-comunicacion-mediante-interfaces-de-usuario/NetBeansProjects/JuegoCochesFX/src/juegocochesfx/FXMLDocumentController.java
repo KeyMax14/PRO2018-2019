@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
@@ -54,10 +55,12 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        vehiculos = new ArrayList<>();
         cocheSeleccionado = cocheSeleccionado.COCHE1;
         // ¿Como le digo el layout del pane, para puntoIni puntoFin de escenario?
-//        escenario = new Escenario(new Punto(paneEscenario., 0), fin)
-       
+//        escenario = new Escenario(paneEscenario.getLayoutX(), paneEscenario.getLayoutY(), paneEscenario.getWidth(), paneEscenario.getHeight());
+//        escenario = new Escenario(30,151,605,454);
+        escenario = new Escenario(0, 0, 532, 263);
 
         // Mirar en clase.
 //        Punto aleatorio = escenario.puntoAleatorio();
@@ -69,9 +72,9 @@ public class FXMLDocumentController implements Initializable {
 //        } while (aleatorio.equals(aleatorio2));
 //        ivCoche2.setLayoutX(aleatorio2.getX());
 //        ivCoche2.setLayoutX(aleatorio2.getY());
-//        vehiculos.add(new Coche("Coche1", escenario, new Punto(ivCoche1.getLayoutX(), ivCoche1.getLayoutY())));
-//        vehiculos.add(new Coche("Coche2", escenario, new Punto(ivCoche2.getLayoutX(), ivCoche2.getLayoutY())));
-//        escenario.vehiculos.addAll(vehiculos);
+        vehiculos.add(new Coche("Coche1", escenario, new Punto(ivCoche1.getLayoutX(), ivCoche1.getLayoutY())));
+        vehiculos.add(new Coche("Coche2", escenario, new Punto(ivCoche2.getLayoutX(), ivCoche2.getLayoutY())));
+        escenario.vehiculos.addAll(vehiculos);
     }
 
     @FXML
@@ -81,7 +84,7 @@ public class FXMLDocumentController implements Initializable {
         txaCajaInformacion.appendText("pulsa \"a\" para apagar coche.\n");
         txaCajaInformacion.appendText("pulsa \"b\" para bajar freno de mano.\n");
         txaCajaInformacion.appendText("pulsa \"s\" para subir freno de mano.\n");
-        txaCajaInformacion.appendText("pulsa \"ARROWS KEYS\" para mover coche.\n\n");
+        txaCajaInformacion.appendText("pulsa \"ARROWS KEYS\" para mover coche.\n");
 
     }
 
@@ -104,42 +107,87 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void mover(KeyEvent event) {
-        double paso = 50;
+        double paso = 5;
         ImageView ivSeleccionado;
+        Coche cocheEscogido;
         if (cocheSeleccionado == CocheSeleccionado.COCHE1) {
             ivSeleccionado = ivCoche1;
+            cocheEscogido = (Coche) vehiculos.get(0);
         } else {
             ivSeleccionado = ivCoche2;
+            cocheEscogido = (Coche) vehiculos.get(1);
         }
         KeyCode kc = event.getCode();
+        String mensaje = "";
+        double posAnterior = -1;
         switch (kc) {
             case UP:
-                ivSeleccionado.setLayoutY(ivSeleccionado.getLayoutY() - paso);
+                posAnterior = cocheEscogido.getY();
+                mensaje = cocheEscogido.moverArriba(paso);
+                if (posAnterior != cocheEscogido.getY()) {
+                    ivSeleccionado.setLayoutY(cocheEscogido.getY());
+                    if (escenario.hayChoque(cocheEscogido, 39)) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Choque!!!");
+                        alert.showAndWait();
+                    }
+                }
+//                ivSeleccionado.setLayoutY(ivSeleccionado.getLayoutY() - paso);
+
                 break;
             case DOWN:
-                ivSeleccionado.setLayoutY(ivSeleccionado.getLayoutY() + paso);
+                posAnterior = cocheEscogido.getY();
+                mensaje = cocheEscogido.moverAbajo(paso);
+                if (posAnterior != cocheEscogido.getY()) {
+                    ivSeleccionado.setLayoutY(cocheEscogido.getY());
+                    if (escenario.hayChoque(cocheEscogido, 39)) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Choque!!!");
+                        alert.showAndWait();
+                    }
+                }
+
                 break;
             case LEFT:
-                ivSeleccionado.setLayoutX(ivSeleccionado.getLayoutX() - paso);
+                posAnterior = cocheEscogido.getX();
+                mensaje = cocheEscogido.moverIzquierda(paso);
+                if (posAnterior != cocheEscogido.getX()) {
+                    ivSeleccionado.setLayoutX(cocheEscogido.getPosicion().getX());
+                    if (escenario.hayChoque(cocheEscogido, 39)) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Choque!!!");
+                        alert.showAndWait();
+                    }
+                }
+
                 break;
             case RIGHT:
-                ivSeleccionado.setLayoutX(ivSeleccionado.getLayoutX() + paso);
+                posAnterior = cocheEscogido.getX();
+                mensaje = cocheEscogido.moverDerecha(paso);
+                if (posAnterior != cocheEscogido.getX()) {
+                    ivSeleccionado.setLayoutX(cocheEscogido.getPosicion().getX());
+                    if (escenario.hayChoque(cocheEscogido,39)) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Choque!!!");
+                        alert.showAndWait();
+                    }
+                }
                 break;
             case A:
+                mensaje = cocheEscogido.apagar();
                 break;
             case E:
+                mensaje = cocheEscogido.arrancar();
                 break;
             case B:
+                mensaje = cocheEscogido.bajarFrenoMano();
                 break;
             case S:
+                mensaje = cocheEscogido.subirFrenoMano();
                 break;
             default:
                 String letra = kc.getName();
+                mensaje = cocheEscogido.getNombre()+": Acción Incorrecta.";
                 System.out.println("La letra es: " + letra);
             /*Apartir de aqui se puede hacer otro switch con lo que quieras.*/
         }
+        txaCajaInformacion.appendText((cocheSeleccionado == CocheSeleccionado.COCHE1) ? "Coche 1: " + mensaje + "\n" : "Coche 2: " + mensaje + "\n");
     }
-
-
 
 }

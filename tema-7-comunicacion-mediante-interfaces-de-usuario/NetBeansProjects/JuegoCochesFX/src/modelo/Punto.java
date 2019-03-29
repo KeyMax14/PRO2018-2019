@@ -33,6 +33,13 @@ public class Punto {
     public double getX() {
         return x;
     }
+    
+    public double distancia(Punto punto){
+       double distanciaX = punto.x-this.x;
+       double distanciaY = punto.y-this.y;
+       double contenido = Math.pow(distanciaX, 2) + Math.pow(distanciaY, 2);
+       return Math.sqrt(contenido);
+    }
 
     public double getY() {
         return y;

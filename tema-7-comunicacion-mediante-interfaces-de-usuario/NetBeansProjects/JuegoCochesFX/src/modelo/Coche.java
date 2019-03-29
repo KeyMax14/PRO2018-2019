@@ -14,6 +14,7 @@ public class Coche implements Posicionable {
     private boolean frenoDeManoPuesto;
     private Punto posicion;
     private Escenario escenario;
+    private double radio;
 
     public String arrancar() {
         String resultado = nombre + ": ";
@@ -88,11 +89,11 @@ public class Coche implements Posicionable {
         } else {
             if (posicion.getX() + pasos < escenario.inicio.getX()) {
                 posicion = new Punto(escenario.inicio.getX(), posicion.getY());
-                respuesta = "Llegamos al limite.";
+                respuesta = "Llegamos al limite." + posicion;
 
             } else if (posicion.getX() + pasos > escenario.fin.getX()) {
                 posicion = new Punto(escenario.fin.getX(), posicion.getY());
-                respuesta = "Llegamos al limite.";
+                respuesta = "Llegamos al limite." + posicion;
             } else {
                 this.posicion = new Punto(this.posicion.getX() + pasos, this.posicion.getY());
                 respuesta = "Ok, coche avanzo hasta: " + posicion;
@@ -148,6 +149,7 @@ public class Coche implements Posicionable {
         this.encendido = false;
         this.frenoDeManoPuesto = true;
         this.escenario = escenario;
+        this.radio = 3.0;
     }
 
     // El siguiente constructor es un constructor de copia.
@@ -158,6 +160,7 @@ public class Coche implements Posicionable {
         this.escenario = otroCoche.escenario;
         this.encendido = otroCoche.encendido;
         this.frenoDeManoPuesto = otroCoche.frenoDeManoPuesto;
+        this.radio = otroCoche.radio;
     }
 
     public String getNombre() {
@@ -184,10 +187,32 @@ public class Coche implements Posicionable {
         this.frenoDeManoPuesto = frenoDeManoPuesto;
     }
 
+    @Override
     public Punto getPosicion() {
         return posicion;
     }
 
+    @Override
+    public double getX(){
+        return posicion.getX();
+    };
+
+    @Override
+    public double getY(){
+        return posicion.getY();
+    };
+
+    @Override
+    public double getRadio() {
+        return radio;
+    }
+
+    @Override
+    public void setRadio(double radio) {
+        this.radio = radio;
+    }
+
+    @Override
     public void setPosicion(Punto posicion) {
         this.posicion = posicion;
     }

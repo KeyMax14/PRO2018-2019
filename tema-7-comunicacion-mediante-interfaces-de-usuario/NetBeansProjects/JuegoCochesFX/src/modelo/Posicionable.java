@@ -10,5 +10,10 @@ package modelo;
  * @author Kevin Hernández García <kevinhg94@gmail.com>
  */
 public interface Posicionable {
-    
+    public double getX();
+    public double getY();
+    public double getRadio();
+    public void setRadio(double radio);
+    public Punto getPosicion();
+    public void setPosicion(Punto posicion);
 }

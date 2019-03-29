@@ -49,7 +49,10 @@ public class FXMLDocumentController implements Initializable {
 
     Ponderaciones calificaciones;
     static int autoIncremental;
-    Map<Button, ObjetosEnGrid> mapaGrid;
+    /*
+        Al principio era de Button, pero es mejor de Object para añadirle más posibilidades.
+    */
+    Map<Object, ObjetosEnGrid> mapaGrid;
 
     @FXML
     private Label lblResultado;
@@ -115,15 +118,18 @@ public class FXMLDocumentController implements Initializable {
                 } else {
                     Label lbl = new Label("        ");
                     lbl.setAlignment(Pos.CENTER_RIGHT);
+                    lbl.setMinWidth(4);
                     lbl.addEventHandler(MouseEvent.MOUSE_CLICKED, evt -> pulsarNotas(evt));
                     TextField txt = new TextField("");
-                    txt.addEventHandler(KeyEvent.KEY_PRESSED, evt -> enterNotas(evt));
+                    txt.addEventHandler(ActionEvent.ACTION, evt -> agregarNuevaNotaLabelPonderacion(evt));
                     Button btn = new Button();
                     btn.setText("" + Double.parseDouble(txtPonderacion.getText().replaceAll(",", ".")));
 //                btn.setText("" + txtPonderacion.getText());
-                    btn.addEventHandler(MouseEvent.MOUSE_CLICKED, evt -> pulsarBotonPonderacion(evt));
+                    btn.addEventHandler(ActionEvent.ACTION, evt -> agregarNuevaNotaLabelPonderacion(evt));
                     gridContenedor.addRow(autoIncremental, lbl, txt, btn);
-                    mapaGrid.put(btn, new ObjetosEnGrid(btn, txt, lbl));
+                    ObjetosEnGrid obj = new ObjetosEnGrid(btn, txt, lbl);
+                    mapaGrid.put(btn, obj);
+//                    mapaGrid.put(txt, obj);
                     autoIncremental++;
                     txtPonderacion.setText("");
                     // Posible método mediante ID
@@ -139,22 +145,6 @@ public class FXMLDocumentController implements Initializable {
             }
         }
 
-    }
-
-    private void enterNotas(KeyEvent event) {
-        KeyCode kc = event.getCode();
-        if (kc == KeyCode.ENTER) {
-            TextField textoSeleccionado = (TextField) event.getSource();
-            System.out.println("Intro PULSADO!!!");
-            Button botonAPulsar = Arrays.stream(mapaGrid.values().toArray())
-                    .map(p -> (ObjetosEnGrid) p)
-                    .filter(p -> p.txt.equals(textoSeleccionado))
-                    .findFirst()
-                    .get().btn;
-            
-//            botonAPulsar.fireEvent(new Event(MouseEvent.MOUSE_PRESSED));
-            
-        }
     }
 
     private void pulsarNotas(MouseEvent event) {
@@ -177,11 +167,26 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    private void pulsarBotonPonderacion(MouseEvent event) {
+    private void agregarNuevaNotaLabelPonderacion(ActionEvent event) {
 //        System.out.println("Evento Creado en tiempo de ejecución.");
-
-        Button btnPulsado = ((Button) event.getSource());
-        ObjetosEnGrid objetosActuales = mapaGrid.get(btnPulsado);
+        ObjetosEnGrid objetosActuales;
+        /*
+            Esto lo modifico el profesor para poner Object en el mapa y poder incluir
+            toda la informacion en el mapa.
+        */
+        
+//        objetosActuales = mapaGrid.get(event.getSource());
+        if (event.getSource() instanceof Button) {
+            Button btnPulsado = ((Button) event.getSource());
+            objetosActuales = mapaGrid.get(btnPulsado);
+        } else { // Caso en el que el evento viene de un TextField
+            TextField textoSeleccionado = (TextField) event.getSource();
+            objetosActuales = Arrays.stream(mapaGrid.values().toArray())
+                    .map(p -> (ObjetosEnGrid) p)
+                    .filter(p -> p.txt.equals(textoSeleccionado))
+                    .findFirst()
+                    .get();
+        }
         objetosActuales.lbl.setText(objetosActuales.lbl.getText() + " " + objetosActuales.txt.getText());
         objetosActuales.txt.setText("");
         agregarNotas(objetosActuales);

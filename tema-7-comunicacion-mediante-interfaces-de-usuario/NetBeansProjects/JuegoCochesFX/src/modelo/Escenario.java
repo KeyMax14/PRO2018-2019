@@ -25,6 +25,10 @@ public class Escenario {
         this.fin = fin;
         vehiculos = new HashSet<>();
     }
+    
+    public Escenario(double iniX, double iniY, double finX, double finY){
+        this(new Punto(iniX, iniY), new Punto(finX, finY));
+    }
 
     public Escenario() {
         this(new Punto(0, 0), new Punto(0, 0));
@@ -34,15 +38,29 @@ public class Escenario {
         this.inicio = inicio;
         this.fin = fin;
     }
-    
-    public void set(double iniX, double iniY, double finX, double finY){
+
+    public void set(double iniX, double iniY, double finX, double finY) {
         set(new Punto(iniX, iniY), new Punto(finX, finY));
     }
-    
-    public Punto puntoAleatorio(){
+
+    public boolean hayChoque(Posicionable vehiculo, double distancia) {
+        boolean resultado = false;
+        if (vehiculos.stream()
+                .map(p -> (Posicionable) p)
+                .filter(p -> !p.equals(vehiculo))
+                .anyMatch(p -> {
+                    
+                    return p.getPosicion().distancia(vehiculo.getPosicion()) < distancia;
+                })) {
+            resultado = true;
+        }
+        return resultado;
+    }
+
+    public Punto puntoAleatorio() {
         Random rnd = new Random();
-        Punto puntoAleatorio = new Punto(inicio.getX()+rnd.nextInt((int)fin.getX()-(int)inicio.getX()+1)
-                , inicio.getY()+rnd.nextInt((int)fin.getY()-(int)inicio.getY()+1));
+        Punto puntoAleatorio = new Punto(inicio.getX() + rnd.nextInt((int) fin.getX() - (int) inicio.getX() + 1),
+                 inicio.getY() + rnd.nextInt((int) fin.getY() - (int) inicio.getY() + 1));
         return puntoAleatorio;
     }
 

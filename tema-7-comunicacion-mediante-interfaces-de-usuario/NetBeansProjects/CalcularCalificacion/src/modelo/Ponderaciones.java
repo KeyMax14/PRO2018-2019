@@ -35,7 +35,7 @@ public class Ponderaciones {
     // Hacerlo con un Stream
     public void agregarNota(double valorPonderacion, String valores) {
 
-        notas.addAll((ArrayList<NotasPonderadas>) Arrays.stream(valores.split(" "))
+        notas.addAll((ArrayList<NotasPonderadas>) Arrays.stream(valores.split("\\s"))
                 .filter(p -> p.matches("^(([0-9])(\\.[0-9]{1,2})?)|(10(\\.[0]+)?)$"))
                 .map(p -> {
                     NotasPonderadas dato = new NotasPonderadas(valorPonderacion, Double.parseDouble(p));

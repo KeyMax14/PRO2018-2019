@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="577.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ahorcadofx.FXMLDocumentController">
+   <children>
+      <Canvas fx:id="canvas" height="357.0" layoutX="49.0" layoutY="127.0" width="394.0" />
+      <TextField layoutX="49.0" layoutY="29.0" prefHeight="72.0" prefWidth="646.0" />
+   </children>
+</AnchorPane>
