@@ -2,17 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="NetBeansProjects">
-            <file>file:/D:/1daw/PRO/Tema%207/NetBeansProjects/JuegoCochesFX/src/juegocochesfx/FXMLDocumentController.java</file>
-            <file>file:/D:/1daw/PRO/Tema%207/NetBeansProjects/JuegoCochesFX/src/modelo/Posicionable.java</file>
-            <file>file:/D:/1daw/PRO/Tema%207/NetBeansProjects/JuegoCochesFX/src/modelo/Escenario.java</file>
-            <file>file:/D:/1daw/PRO/Tema%207/NetBeansProjects/JuegoCochesFX/src/juegocochesfx/JuegoCochesFX.java</file>
-            <file>file:/D:/1daw/PRO/Tema%207/NetBeansProjects/JuegoCochesFX/src/modelo/Coche.java</file>
-        </group>
         <group>
             <file>file:/media/daw/KPEN/1daw/PRO/Tema%207/NetBeansProjects/JuegoCochesFX/src/modelo/Escenario.java</file>
             <file>file:/media/daw/KPEN/1daw/PRO/Tema%207/NetBeansProjects/JuegoCochesFX/src/modelo/Coche.java</file>
             <file>file:/media/daw/KPEN/1daw/PRO/Tema%207/NetBeansProjects/JuegoCochesFX/src/juegocochesfx/JuegoCochesFX.java</file>
         </group>
+        <group name="NetBeansProjects"/>
     </open-files>
 </project-private>
