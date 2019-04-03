@@ -25,8 +25,8 @@ public class Escenario {
         this.fin = fin;
         vehiculos = new HashSet<>();
     }
-    
-    public Escenario(double iniX, double iniY, double finX, double finY){
+
+    public Escenario(double iniX, double iniY, double finX, double finY) {
         this(new Punto(iniX, iniY), new Punto(finX, finY));
     }
 
@@ -49,7 +49,7 @@ public class Escenario {
                 .map(p -> (Posicionable) p)
                 .filter(p -> !p.equals(vehiculo))
                 .anyMatch(p -> {
-                    
+
                     return p.getPosicion().distancia(vehiculo.getPosicion()) < distancia;
                 })) {
             resultado = true;
@@ -57,10 +57,40 @@ public class Escenario {
         return resultado;
     }
 
+    public boolean pertenece(Punto p) {
+        boolean resultado = true;
+        if (this.inicio.getX() > p.getX() || this.fin.getX() < p.getX()) {
+            resultado = false;
+        }
+
+        if (this.inicio.getY() > p.getY() || this.fin.getY() < p.getY()) {
+            resultado = false;
+        }
+        return resultado;
+    }
+
+    public Punto recolocarPuntoDentroDelEscenario(Punto p) {
+        Punto puntoNuevo;
+
+        if (this.inicio.getX() > p.getX()) {
+            puntoNuevo = new Punto(this.inicio.getX(), p.getY());
+        } else if (this.fin.getX() < p.getX()) {
+            puntoNuevo = new Punto(this.fin.getX(), p.getY());
+        } else if (this.inicio.getY() > p.getY()) {
+            puntoNuevo = new Punto(p.getX(), this.inicio.getY());
+        } else if (this.fin.getY() < p.getY()) {
+            puntoNuevo = new Punto(p.getX(), this.fin.getY());
+        } else {
+            puntoNuevo = p;
+        }
+
+        return puntoNuevo;
+    }
+
     public Punto puntoAleatorio() {
         Random rnd = new Random();
         Punto puntoAleatorio = new Punto(inicio.getX() + rnd.nextInt((int) fin.getX() - (int) inicio.getX() + 1),
-                 inicio.getY() + rnd.nextInt((int) fin.getY() - (int) inicio.getY() + 1));
+                inicio.getY() + rnd.nextInt((int) fin.getY() - (int) inicio.getY() + 1));
         return puntoAleatorio;
     }
 

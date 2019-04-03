@@ -87,17 +87,28 @@ public class Coche implements Posicionable {
             respuesta = "Freno de mano puesto. Coche apagado.";
             encendido = false;
         } else {
-            if (posicion.getX() + pasos < escenario.inicio.getX()) {
-                posicion = new Punto(escenario.inicio.getX(), posicion.getY());
-                respuesta = "Llegamos al limite." + posicion;
-
-            } else if (posicion.getX() + pasos > escenario.fin.getX()) {
-                posicion = new Punto(escenario.fin.getX(), posicion.getY());
+            this.posicion = new Punto(this.posicion.getX() + pasos, this.posicion.getY());
+            if (!escenario.pertenece(posicion)) {
+                posicion = new Punto(escenario.recolocarPuntoDentroDelEscenario(posicion));
                 respuesta = "Llegamos al limite." + posicion;
             } else {
-                this.posicion = new Punto(this.posicion.getX() + pasos, this.posicion.getY());
                 respuesta = "Ok, coche avanzo hasta: " + posicion;
             }
+
+            /*
+                Estructura antes de pertenece.
+             */
+//            if (posicion.getX() + pasos < escenario.inicio.getX()) {
+//                posicion = new Punto(escenario.inicio.getX(), posicion.getY());
+//                respuesta = "Llegamos al limite." + posicion;
+//
+//            } else if (posicion.getX() + pasos > escenario.fin.getX()) {
+//                posicion = new Punto(escenario.fin.getX(), posicion.getY());
+//                respuesta = "Llegamos al limite." + posicion;
+//            } else {
+//                this.posicion = new Punto(this.posicion.getX() + pasos, this.posicion.getY());
+//                respuesta = "Ok, coche avanzo hasta: " + posicion;
+//            }
         }
         return respuesta;
     }
@@ -119,15 +130,11 @@ public class Coche implements Posicionable {
             respuesta = "Freno de mano puesto. Coche apagado.";
             encendido = false;
         } else {
-            if (posicion.getY() + pasos < escenario.inicio.getY()) {
-                posicion = new Punto(posicion.getX(), escenario.inicio.getY());
-                respuesta = "Llegamos al limite:" + posicion;
-
-            } else if (posicion.getY() + pasos > escenario.fin.getY()) {
-                posicion = new Punto(posicion.getX(), escenario.fin.getY());
-                respuesta = "Llegamos al limite: " + posicion;
+            this.posicion = new Punto(this.posicion.getX(), this.posicion.getY() + pasos);
+            if (!escenario.pertenece(posicion)) {
+                posicion = new Punto(escenario.recolocarPuntoDentroDelEscenario(posicion));
+                respuesta = "Llegamos al limite." + posicion;
             } else {
-                this.posicion = new Punto(this.posicion.getX(), this.posicion.getY() + pasos);
                 respuesta = "Ok, coche avanzo hasta: " + posicion;
             }
         }
@@ -193,14 +200,18 @@ public class Coche implements Posicionable {
     }
 
     @Override
-    public double getX(){
+    public double getX() {
         return posicion.getX();
-    };
+    }
+
+    ;
 
     @Override
-    public double getY(){
+    public double getY() {
         return posicion.getY();
-    };
+    }
+
+    ;
 
     @Override
     public double getRadio() {

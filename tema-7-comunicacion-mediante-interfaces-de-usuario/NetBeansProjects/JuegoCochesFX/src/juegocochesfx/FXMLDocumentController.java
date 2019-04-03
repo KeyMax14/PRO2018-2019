@@ -183,7 +183,7 @@ public class FXMLDocumentController implements Initializable {
                 break;
             default:
                 String letra = kc.getName();
-                mensaje = cocheEscogido.getNombre()+": Acción Incorrecta.";
+                mensaje = "Acción Incorrecta.";
                 System.out.println("La letra es: " + letra);
             /*Apartir de aqui se puede hacer otro switch con lo que quieras.*/
         }
