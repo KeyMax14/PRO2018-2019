@@ -162,6 +162,7 @@ public class FXMLDocumentController implements Initializable {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setFill(Color.BEIGE);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        lblErrores.setText("");
         
         /*
             Hacer horca
